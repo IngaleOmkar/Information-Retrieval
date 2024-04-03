@@ -1,0 +1,4 @@
+pysolr == 3.9.0
+wordcloud == 1.9.3
+pandas
+request
