@@ -1,7 +1,8 @@
 import pysolr 
 import time 
 import pandas as pd 
-# import request
+import atexit
+# import requests
 
 import re
 from wordcloud import WordCloud, STOPWORDS
@@ -39,17 +40,16 @@ solr.ping() # optional
  
 # ...or all documents. 
 #solr.delete(q='*:*') 
-
+df = pd.read_csv('../data/original_data.csv') # change the path to the data file
+    # Remove the unnamed index column
+df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
 def addFileIntoCore(): 
     print("Preparing data for upload...\n")
     # Read the CSV file into a DataFrame 
-    df = pd.read_csv('../data/original_data.csv') # change the path to the data file
 
-    # Remove the unnamed index column
-    df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-    df = df.rename(columns={'score': 'reddit_score'})    
-    df['counter']=0 # for upvotes and downvotes
+    #df = df.rename(columns={'score': 'reddit_score'}) #manually edit or let it run once only
+    #df['counter']=0 # let it run once only
     # Convert DataFrame rows to dictionaries and index into Solr 
     docs = df.to_dict(orient='records') 
     print(df.head())
@@ -65,18 +65,25 @@ def vote(doc_id , vote_type):
     # doc_id = request.form.get('id')
     # vote_type = request.form.get('vote')
 
-    if doc_id and vote_type in ['up' , 'down']:
-
-        doc= solr.search(f'id:{doc_id}').docs[0] # get the document with the id
+        #doc= solr.search(f'id:{doc_id}').docs[0] # get the document with the id
 
         if vote_type == 'up':
-            print(doc['counter'])
-            doc['counter'] +=1
+            #print(doc['counter'])
+            #doc['counter'] +=1
+            df.loc[df["id"] == doc_id, 'counter'] += 1
+            solr.add({
+                "id": doc_id,
+                "counter": {"inc": 1},
+            })
         
         elif vote_type == 'down':
-            doc['counter'] -=1
+            df.loc[df["id"] == doc_id, 'counter'] -= 1
+            solr.add({
+                "id": doc_id,
+                "counter": {"inc": -1},
+            })            
         
-        solr.add([doc])
+        #solr.add([doc])
         print("Vote updated succesfully.\n")
 
 def normalQuery(query): #should pass something to it 
@@ -202,36 +209,48 @@ def sortAscending(searchString , sortType="reddit_score asc"):
         print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
 
 def main():
-    print("Welcome to the Reddit Search Engine")
-    print("1. Index files")
-    print("2. Normal Search")
-    print("3. Timeline Search")
-    print("4. Sort Results")
-    print("5. Vote on a post")
-    print("6. Exit")
-    choice = int(input("Enter your choice: "))
-    if choice == 1:
-        addFileIntoCore()
-    elif choice == 2:
-        normalQuery()
-    elif choice == 3:
-        query = input("Enter the query: ")
-        start = input("Enter the start date in YYYY-MM-DDTHH:MM:SSZ format: ")
-        end = input("Enter the end date in YYYY-MM-DDTHH:MM:SSZ format: ")
-        # query = "title: recession"
-        # start = "2020-01-01T00:00:00Z"
-        # end = "2020-12-31T23:59:59Z"
-        timelineSearch(query, start, end)
-    elif choice == 4:
-        searchString = input("Enter the search query: ")
-        sortType = input("Enter the sort type: [reddit_score asc/desc]")
-        sortAscending(searchString, sortType)
-    elif choice == 5:
-        doc_id = input("Enter the document id: ")
-        vote_type = input("Enter the vote type: [up/down]")
-        vote(doc_id, vote_type)
-    else:
-        exit(0)
+        
+    while(1): #to remove
+        print("Welcome to the Reddit Search Engine")
+        print("1. Index files")
+        print("2. Normal Search")
+        print("3. Timeline Search")
+        print("4. Sort Results")
+        print("5. Vote on a post")
+        print("6. Exit")
+        choice = int(input("Enter your choice: "))
+        if choice == 1:
+            addFileIntoCore()
+        elif choice == 2:
+            query = input("Enter the query: ")
+            normalQuery(query)
+        elif choice == 3:
+            query = input("Enter the query: ")
+            start = input("Enter the start date in YYYY-MM-DD format: ")
+            end = input("Enter the end date in YYYY-MM-DD format: ")
+
+            query = "title: " + query
+            start += "T00:00:00Z"
+            end += "T23:59:59Z"
+
+            # query = "title: recession"
+            # start = "2020-01-01T00:00:00Z"
+            # end = "2020-12-31T23:59:59Z"
+            timelineSearch(query, start, end)
+        elif choice == 4:
+            searchString = input("Enter the search query: ")
+            sortType = input("Enter the sort type: [reddit_score asc/desc]")
+            sortAscending(searchString, sortType)
+        elif choice == 5:
+            doc_id = input("Enter the document id: ")
+            vote_type = input("Enter the vote type: [up/down]")
+            vote(doc_id, vote_type)
+        else:
+            @atexit.register
+            def save():
+                df.to_csv('../data/original_dataTest.csv') #change name later
+
+            exit(0)
 
 if __name__ == "__main__":
     main()
