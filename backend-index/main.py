@@ -41,8 +41,11 @@ solr.ping() # optional
 # ...or all documents. 
 #solr.delete(q='*:*') 
 df = pd.read_csv('../data/original_data.csv') # change the path to the data file
-    # Remove the unnamed index column
+
+# Remove the unnamed index column
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+df = df.rename(columns={'score': 'reddit_score'}) # do not perform this if the input data is "../data/original_dataTest.csv"
+df['counter'] = 0 # do not perform this if the input data is "../data/original_dataTest.csv"
 
 def addFileIntoCore(): 
     print("Preparing data for upload...\n")
@@ -51,6 +54,8 @@ def addFileIntoCore():
     #df = df.rename(columns={'score': 'reddit_score'}) #manually edit or let it run once only
     #df['counter']=0 # let it run once only
     # Convert DataFrame rows to dictionaries and index into Solr 
+
+    global df
     docs = df.to_dict(orient='records') 
     print(df.head())
 
@@ -64,20 +69,24 @@ def addFileIntoCore():
 def vote(doc_id , vote_type):
     # doc_id = request.form.get('id')
     # vote_type = request.form.get('vote')
+    try:
+        global df
 
-        #doc= solr.search(f'id:{doc_id}').docs[0] # get the document with the id
+        doc = solr.search(f'id: {doc_id}').docs[0]
+        current_counter = doc['counter']
 
         if vote_type == 'up':
             #print(doc['counter'])
             #doc['counter'] +=1
-            df.loc[df["id"] == doc_id, 'counter'] += 1
+            df.loc[df["id"] == doc_id, 'counter'] = current_counter + 1
             solr.add({
                 "id": doc_id,
                 "counter": {"inc": 1},
             })
         
         elif vote_type == 'down':
-            df.loc[df["id"] == doc_id, 'counter'] -= 1
+
+            df.loc[df["id"] == doc_id, 'counter'] = current_counter - 1
             solr.add({
                 "id": doc_id,
                 "counter": {"inc": -1},
@@ -85,6 +94,8 @@ def vote(doc_id , vote_type):
         
         #solr.add([doc])
         print("Vote updated succesfully.\n")
+    except Exception as e:
+        print("Error: ", e)
 
 def normalQuery(query): #should pass something to it 
     start_time = time.time() 
@@ -209,7 +220,7 @@ def sortAscending(searchString , sortType="reddit_score asc"):
         print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
 
 def main():
-        
+    global df
     while(1): #to remove
         print("Welcome to the Reddit Search Engine")
         print("1. Index files")
