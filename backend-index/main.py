@@ -66,7 +66,7 @@ def addFileIntoCore():
  
     print("\nFiles indexed succesfully.\n") 
 
-def vote(doc_id , vote_type):
+def vote(doc_id , vote_type , query):
     # doc_id = request.form.get('id')
     # vote_type = request.form.get('vote')
     try:
@@ -75,6 +75,7 @@ def vote(doc_id , vote_type):
         doc = solr.search(f'id: {doc_id}').docs[0]
         current_counter = doc['counter']
 
+        # edit the counter of the document
         if vote_type == 'up':
             #print(doc['counter'])
             #doc['counter'] +=1
@@ -91,30 +92,38 @@ def vote(doc_id , vote_type):
                 "id": doc_id,
                 "counter": {"inc": -1},
             })            
-        
-        #solr.add([doc])
-        print("Vote updated succesfully.\n")
+
+        # commit the changes
+        solr.commit()
+
+        # return the updated document
+        normalQuery(query)
+
     except Exception as e:
         print("Error: ", e)
 
 def normalQuery(query): #should pass something to it 
-    start_time = time.time() 
-
-    results = solr.search(f'spellcheck: {query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
+    start_time = time.time()
+    results = solr.search(f'{query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
         'rows' : 5, # rows to display  
-        'fl': 'title, subreddit, body' # data to fetch, renive to get all at the cost of time  
+        'fl': 'title, subreddit, body, score', # data to fetch, renive to get all at the cost of time  
+        'df': 'spellcheck', # default field to search
+        'defType': 'dismax', # use dismax query parser
+        'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
     }) # have to sort according to "upvotes" for interactive search 
      
     # The `Results` object stores total results found, by default the top 
     # ten most relevant results and any additional data like 
     # facets/highlighting/spelling/etc. 
     print("Found {0} result(s).\n".format(len(results))) 
+    print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
  
     # Just loop over it to access the results. 
     # results store all of the data from solr, format(result["smth"]) to print that result 
     for result in results: 
         print("The title is '{0}'.".format(result['title'])) 
         print("The subreddit is '{0}'.".format(result['subreddit'])) 
+        print("The score is '{0}'.".format(result['score']))
          
         if (format(result['body']) == "['NaN']"): 
             print("Body does not exist.\n") 
@@ -151,15 +160,15 @@ def timelineSearch(query, start , end):
 
     results = solr.search(query , **{ 
         'rows' : 5,
-        'fl': '* , score', 
+        'fl': 'title, subreddit, body, score', 
         'fq': 'created:[' + start + ' TO ' + end + ']',
         'df': 'spellcheck',
+        'defType': 'dismax', # use dismax query parser
+        'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
     }) 
 
     print("Found {0} result(s).\n".format(len(results))) 
     print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
-
-
 
     if (len(results) == 0):
         print("No results found.\n")
@@ -201,16 +210,22 @@ def generateWordcloud(text):
     plt.show()
 
 # sortType can be 'reddit_score desc' or 'reddit_score asc'
-def sortAscending(searchString , sortType="reddit_score asc"):
-    results = solr.search('title: ' + searchString, **{
+def sortAscending(searchString , sort_type="reddit_score asc"):
+    results = solr.search( searchString, **{
         'rows': 5,
-        'fl': 'title, subreddit, body',
-        'sort': sortType
+        'fl': 'title, subreddit, body, score',
+        'df' : 'spellcheck',
+        'sort': sort_type,
+        'defType': 'dismax', # use dismax query parser
+        'bf': 'counter^2'
     })
+    
+    print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
 
     for result in results:
         print("The title is '{0}'.".format(result['title']))
         print("The subreddit is '{0}'.".format(result['subreddit']))
+        print("The score is '{0}'.".format(result['score']))
 
         if (format(result['body']) == "['NaN']"):
             print("Body does not exist.\n")
@@ -250,12 +265,13 @@ def main():
             timelineSearch(query, start, end)
         elif choice == 4:
             searchString = input("Enter the search query: ")
-            sortType = input("Enter the sort type: [reddit_score asc/desc]")
-            sortAscending(searchString, sortType)
+            sort_type = input("Enter the sort type: [reddit_score asc/desc]")
+            sortAscending(searchString, sort_type)
         elif choice == 5:
             doc_id = input("Enter the document id: ")
             vote_type = input("Enter the vote type: [up/down]")
-            vote(doc_id, vote_type)
+            query = input("Enter the query: ")
+            vote(doc_id, vote_type , query)
         else:
             @atexit.register
             def save():
