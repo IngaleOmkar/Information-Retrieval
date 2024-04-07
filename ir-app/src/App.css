@@ -1,4 +1,108 @@
-.App {
+:root{
+  --secondarycolor:#86A2B3;
+  --primarycolor:#E0E0E1;
+  --fontcolor:#978897; 
+  --white: #FFFFFF;
+  --hover: #2E5266;
+  --grey: #323232;
+  --onyxblack: #35393C; 
+  --button: #42858C; 
+  --background:#E9FDFC;
+  --navbackground:#35393C; 
+  --navitemcolor: #E0E0E1;
+  --redditorange:  #FF5700;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+* { 
+  box-sizing:border-box; 
+  margin:0;
+  padding:0; 
+}
+
+body {
+  /* font-family: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  /* font-family:"Open Sans",sans-serif; */
+  /* font-family: 'Inconsolata', monospace;   */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #393D3F;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Concert One", sans-serif;
+}
+
+.Page {
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction:column;
+  align-content:center;
+  row-gap:20px;
+  height:100%;
+  background-color: var(--white);
+}
+
+.Top {
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  margin-top:50px;
+}
+
+.icon {
+  width:70px;
+  height:70px;
+  margin-right:20px;
+}
+
+.Title { 
+  display:flex;
+  background-color: var(--redditorange);
+  width:100%;
+  align-items: center;
+  justify-content:center;
+  border-radius:15px;
+  height:70px;
+}
+
+.submit { 
+  width:40%;
+  display:flex; 
+  align-items: center;
+  justify-content:center;
+  column-gap:10px;
+  flex-direction: column;
+}
+
+.posts {
+  width:60%;
+  display:flex;
+  flex-direction: column;
+  background-color: #FF5700;
+}
+
+.posts_top { 
+  display:flex;
+  justify-content: space-between;
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.post {
+  display:flex; 
+  flex-direction: column;
+  margin-top:10px;
+
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +139,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
