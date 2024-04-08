@@ -13,6 +13,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import dayjs from 'dayjs';
 import Posts from "../components/Posts";
+import { PieChart } from 'react-minimal-pie-chart';
 
 export default function HomePage() { 
   const [search,setSearch] = useState(''); //search bar 
@@ -156,8 +157,29 @@ export default function HomePage() {
       </Navbar>
       
       {showAdvanced && <div style={{paddingTop: "25px"}}></div>}
+
+      <div className="row" style={{width: "100%"}}>
+        <div className="col-4">
+          <PieChart
+            data={[
+              // match color to sentiment
+              { title: 'One', value: 1, color: '#66bb6a' },
+              { title: 'Two', value: 1, color: '#f44336' },
+              { title: 'Three', value: 1, color: '#ffb74d'},
+            ]} label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+            labelStyle={{
+              fontSize: '5px',
+              fontFamily: 'sans-serif',
+              fill: 'black',
+            }}
+          />
+        </div>
+        <div className="col">
+          <Posts documents={documents}/>
+        </div>
+      </div>
       
-      <Posts documents={documents}/>
+      
       
     </div>
   ) 
