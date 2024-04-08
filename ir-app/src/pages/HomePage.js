@@ -154,7 +154,9 @@ export default function HomePage() {
           </div>
         </div>
       </Navbar>
-
+      
+      {showAdvanced && <div style={{paddingTop: "25px"}}></div>}
+      
       <Posts documents={documents}/>
       
     </div>
