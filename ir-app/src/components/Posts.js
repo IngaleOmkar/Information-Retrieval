@@ -5,6 +5,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 import React from 'react';
 import { useState } from 'react';
+import { FaMicrochip } from "react-icons/fa6";
+
 const Posts = ({ documents }) => {
     const [sortOrder, setSortOrder] = useState('desc'); // Default to descending order
   
@@ -45,8 +47,15 @@ const Posts = ({ documents }) => {
   
     return (
       <div>
-        <div>
-          <h2>Search Results</h2>
+        <div className='row justify-content-between'>
+          <div className='col-auto'>
+            <h2>Search Results</h2>
+          </div>
+          <div className='col-auto'>
+            <Button variant="primary" size="sm" onClick={toggleSortOrder}>
+              <FaMicrochip /> Generate Insight
+            </Button>
+          </div>
         </div>
 
         {sortedDocuments.map((document, index) => (
