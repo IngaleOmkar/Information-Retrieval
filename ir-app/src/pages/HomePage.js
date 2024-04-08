@@ -7,26 +7,11 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react";
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import axios from 'axios'
-import Switch from '@mui/material/Switch';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import dayjs from 'dayjs';
-import Nav from 'react-bootstrap/Nav';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import Posts from "../components/Posts";
 
 export default function HomePage() { 
@@ -59,7 +44,8 @@ export default function HomePage() {
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       date: '2021-10-01',
       id: 'random1',
-      score: 10.14
+      score: 10.14,
+      sentiment: 'positive'
     },
     {
       title: 'Title 2',
@@ -67,9 +53,18 @@ export default function HomePage() {
       body: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       date: '2021-10-02',
       id: 'random2',
-      score: 15.23
+      score: 15.23,
+      sentiment: 'negative'
     },
-    // Add more documents as needed
+    {
+      title: 'Title 3',
+      subreddit: 'Python',
+      body: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      date: '2021-10-03',
+      id: 'random3',
+      score: 20.32,
+      sentiment: 'neutral'
+    }
   ];
 
   const handleSubmit = ( event ) => { 
@@ -92,7 +87,7 @@ export default function HomePage() {
 
   const advancedSearchOptions = () => {
     return (
-      <div>
+      <div className="d-flex align-items-center">
         <DropdownButton
           id="time"
           variant="outline-light"
@@ -154,13 +149,13 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div>
+          <div >
             { showAdvanced ? advancedSearchOptions() : null }
           </div>
         </div>
       </Navbar>
 
-      <Posts documents={documents} />
+      <Posts documents={documents}/>
       
     </div>
   ) 
