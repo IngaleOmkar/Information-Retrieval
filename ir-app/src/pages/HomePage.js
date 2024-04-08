@@ -57,12 +57,16 @@ export default function HomePage() {
       title: 'Title 1',
       subreddit: 'ReactJS',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      date: '2021-10-01',
+      id: 'random1',
       score: 10.14
     },
     {
       title: 'Title 2',
       subreddit: 'JavaScript',
       body: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      date: '2021-10-02',
+      id: 'random2',
       score: 15.23
     },
     // Add more documents as needed
@@ -156,7 +160,7 @@ export default function HomePage() {
         </div>
       </Navbar>
 
-
+      <Posts documents={documents} />
       
     </div>
   ) 

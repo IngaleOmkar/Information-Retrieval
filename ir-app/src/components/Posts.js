@@ -1,4 +1,7 @@
-
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/esm/Button';
+import { AiFillLike } from "react-icons/ai";
+import { IoMdPerson } from "react-icons/io";
 import React from 'react';
 import { useState } from 'react';
 const Posts = ({ documents }) => {
@@ -20,24 +23,43 @@ const Posts = ({ documents }) => {
   
     // Sort documents by score
     const sortedDocuments = sortDocumentsByScore(documents);
+
+    const getSubRedditPill = (subreddit) => {
+      return (
+        <Button variant="outline-primary" size="sm" disabled>{subreddit}</Button>
+      );
+    }
   
     return (
-      <div className="posts">
-        <div className="posts_top">
-            <h2>Search Results</h2>
-            <button onClick={toggleSortOrder}>
-            {sortOrder === 'asc' ? 'Sort by Descending Reddit Score' : 'Sort by Ascending Reddit Score'}
-            </button> 
+      <div>
+        <div>
+          <h2>Search Results</h2>
         </div>
 
-        {sortedDocuments.map((document, index) => (
+        {/* {sortedDocuments.map((document, index) => (
           <div key={index} className="post">
             <h3>{document.title}</h3>
             <p>Subreddit: {document.subreddit}</p>
             <p>Score: {document.score}</p>
             <p>{document.body}</p>
           </div>
+        ))} */}
+
+        {sortedDocuments.map((document, index) => (
+          <div key={index} className="post">
+            <Card>
+              <Card.Header>
+                <IoMdPerson />  {document.id} · {getSubRedditPill("r/" + document.subreddit)}
+              </Card.Header>
+              <Card.Body>
+                <Card.Title>{document.title}</Card.Title>
+                <Card.Text>{document.body}</Card.Text>
+                <Card.Text> <AiFillLike /> {document.score} </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
         ))}
+
       </div>
     );
   };
