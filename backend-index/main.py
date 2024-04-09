@@ -1,3 +1,4 @@
+import json
 import pysolr 
 import time 
 import pandas as pd 
@@ -110,25 +111,6 @@ def vote(df, doc_id , vote_type , query , start, end, sort_type):
     except Exception as e:
         print("Error: ", e)
 
-
-def query_test(query):
-    results = solr.search(f'{query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
-        'rows' : 5, # rows to display  
-        'fl': 'title, subreddit, body, score', # data to fetch, renive to get all at the cost of time  
-        'df': 'spellcheck', # default field to search
-        'defType': 'dismax', # use dismax query parser
-        'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
-    }) # have to sort according to "upvotes" for interactive search 
-
-    # iterate over the results and create a json object
-    response = {}
-    response['total_results'] = results.hits
-    response['query_time'] = results.qtime
-    response['documents'] = results.docs
-
-    return json.dumps(response)
-
-
 def normalQuery(query): #should pass something to it 
     start_time = time.time()
     results = solr.search(f'{query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
@@ -170,6 +152,23 @@ def normalQuery(query): #should pass something to it
          
     # Print the elapsed time 
     print("\n\nElapsed time: %.3f seconds\n" %elapsed_time) 
+
+def query_test(query):
+    results = solr.search(f'{query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
+        'rows' : 5, # rows to display  
+        'fl': 'title, subreddit, body, score', # data to fetch, renive to get all at the cost of time  
+        'df': 'spellcheck', # default field to search
+        'defType': 'dismax', # use dismax query parser
+        'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
+    }) # have to sort according to "upvotes" for interactive search 
+
+    # iterate over the results and create a json object
+    response = {}
+    response['total_results'] = results.hits
+    response['query_time'] = results.qtime
+    response['documents'] = results.docs
+
+    return json.dumps(response)
 
 def timelineSearch(query, start , end):
     # assumption is that the date is in the format "YYYY-MM-DDTHH:MM:SSZ"
@@ -326,12 +325,12 @@ def combinedQuery(query, start="", end="", sort_type=""):
     # Print the elapsed time 
     print("\n\nElapsed time: %.3f seconds\n" %elapsed_time) 
 
-    return {
-        "total_results": results.hits,
-        "query_time" : results.qtime,
-        "documents": results.docs,
-        "spellcheck": results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"
-    }
+    response= {}
+    response["total_results"] = results.hits
+    response["query_time"] = results.qtime
+    response["documents"] = results.docs
+    response["spellcheck"] = results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"
+    return response
 
 def main():
     global df
