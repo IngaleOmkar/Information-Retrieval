@@ -14,10 +14,11 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import dayjs from 'dayjs';
 import Posts from "../components/Posts";
 import { PieChart } from 'react-minimal-pie-chart';
+import { performQuery } from "../api";
 
-export default function HomePage() { 
-  const [search,setSearch] = useState(''); //search bar 
-  const [data,setData] = useState([]); //holds result of reddit posts
+export default function HomePage() {
+  const [search, setSearch] = useState(''); //search bar 
+  const [data, setData] = useState([]); //holds result of reddit posts
   const [value, setValue] = React.useState([
     dayjs('2024-04-17'),
     dayjs('2024-04-21'),
@@ -38,53 +39,53 @@ export default function HomePage() {
     setChecked(event.target.checked);
   };
 
-  const documents = [
-    {
-      title: 'Title 1',
-      subreddit: 'ReactJS',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      date: '2021-10-01',
-      id: 'random1',
-      score: 10.14,
-      sentiment: 'positive'
-    },
-    {
-      title: 'Title 2',
-      subreddit: 'JavaScript',
-      body: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      date: '2021-10-02',
-      id: 'random2',
-      score: 15.23,
-      sentiment: 'negative'
-    },
-    {
-      title: 'Title 3',
-      subreddit: 'Python',
-      body: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      date: '2021-10-03',
-      id: 'random3',
-      score: 20.32,
-      sentiment: 'neutral'
-    }
-  ];
+  const [documents, setDocuments] = useState([]); //holds result of reddit posts
 
-  const handleSubmit = ( event ) => { 
-    console.log("Query")
-    setData([])
-    const apiUrl = `http:localhost:8000/search/${search}`
-    axios.get(apiUrl)
-    .then(response => {
-      // Handle success
-      console.log('Response:', response.data);
-    })
-    .catch(error => {
-      // Handle error
-      console.error('Error:', error);
-    }); 
+  const handleSubmit = async (event) => {
+    // this function will test if the server is running for now
+    // a simple fetch command for: http://127.0.0.1:5000/query?q=tesla
+    // log the response 
+
+    // prevent the page from refreshing
+    event.preventDefault();
+
+    //fetch the data from the servers
+    const response = await fetch('http://127.0.0.1:5000/query?q=' + search);
+
+    //convert the response to json
+    const data = await response.json();
+
+    const data_json = JSON.parse(data);
+
+    setDocuments(data_json['documents']);
   }
 
-  const toggleAdvancedSearchOptions = () => {setShowAdvanced(!showAdvanced)};
-
+  const toggleAdvancedSearchOptions = () => { setShowAdvanced(!showAdvanced) };
+  
+  const handleSearch = async (type) => {
+    // type can be either "query" or "vote"
+    let inputData= {}
+    if(type === "query"){
+      inputData = {
+        query:  "recession", //search,
+        start: "2024-02-01",  //value[0].format('YYYY-MM-DD'),
+        end:  "2024-02-14",//value[1].format('YYYY-MM-DD'),
+        sort_type: "reddit_score asc"
+      }
+    }
+    else{ 
+      inputData = {
+        query:  "recession", //search,
+        start: "2024-02-01",  //value[0].format('YYYY-MM-DD'),
+        end:  "2024-02-14",//value[1].format('YYYY-MM-DD'),
+        sort_type: "reddit_score asc",
+        doc_id: "1akg3bc",
+        vote_type: "down"
+      }
+    }
+    const results = await performQuery(inputData, type)
+    console.log(results)
+  }
 
   const advancedSearchOptions = () => {
     return (
@@ -96,12 +97,12 @@ export default function HomePage() {
           title={timeFilter}
           className="mt-2"
           style={{ marginLeft: '15px' }}>
-            <Dropdown.Item  onClick={() => { setTimeFilter("Time") }} >
-                Time
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
-            <Dropdown.Item  onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >
+            Time
+          </Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
         </DropdownButton>
         <DropdownButton
           id="time"
@@ -110,38 +111,38 @@ export default function HomePage() {
           title={timeFilter}
           className="mt-2"
           style={{ marginLeft: '15px' }}>
-            <Dropdown.Item  onClick={() => { setTimeFilter("Time") }} >
-                Time
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
-            <Dropdown.Item  onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >
+            Time
+          </Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
         </DropdownButton>
       </div>
     );
   }
 
   return (
-    <div id="Page" className="Page" style={{backgroundColor: 'white', height: '100vh', font:'-moz-initial'}}>
+    <div id="Page" className="Page" style={{ backgroundColor: 'white', height: '100vh', font: '-moz-initial' }}>
 
       <Navbar className="navbar-dark bg-dark fixed-top">
-        <div className="row" style={{width: "100%"}}>
+        <div className="row" style={{ width: "100%" }}>
           <div className="col">
             <div className="row">
-              <div className="col-auto" style={{paddingLeft: "15px"}}>
-                <img src="/redditicon.png" alt="Logo" className="navbar-brand mr-auto" style={{ maxWidth: '50px', maxHeight: '50px', paddingLeft: "15px"}}/>
+              <div className="col-auto" style={{ paddingLeft: "15px" }}>
+                <img src="/redditicon.png" alt="Logo" className="navbar-brand mr-auto" style={{ maxWidth: '50px', maxHeight: '50px', paddingLeft: "15px" }} />
                 <span className="navbar-brand mb-0 h1">Reddit Finance Search</span>
               </div>
               <div className="col">
                 <div className="row align-items-center">
                   <div className="col">
-                    <form className="form-inline my-2 my-lg-0">
-                      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setSearch(e.target.value)}/>
+                    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+                      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setSearch(e.target.value)} />
                     </form>
                   </div>
                   <div className="col-auto">
                     <button className="btn btn-outline-success my-2 my-sm-0"
-                      style={{marginLeft: "10px"}}
+                      style={{ marginLeft: "10px" }}
                       onClick={() => setShowAdvanced(!showAdvanced)} >
                       {showAdvanced ? "Hide" : "Show"} Filters
                     </button>
@@ -151,21 +152,21 @@ export default function HomePage() {
             </div>
           </div>
           <div >
-            { showAdvanced ? advancedSearchOptions() : null }
+            {showAdvanced ? advancedSearchOptions() : null}
           </div>
         </div>
       </Navbar>
-      
-      {showAdvanced && <div style={{paddingTop: "25px"}}></div>}
 
-      <div className="row" style={{width: "100%"}}>
-        <div className="col-4">
+      {showAdvanced && <div style={{ paddingTop: "25px" }}></div>}
+
+      <div className="row" style={{ width: "100%" }}>
+        <div className="col-auto">
           <PieChart
             data={[
               // match color to sentiment
               { title: 'One', value: 1, color: '#66bb6a' },
               { title: 'Two', value: 1, color: '#f44336' },
-              { title: 'Three', value: 1, color: '#ffb74d'},
+              { title: 'Three', value: 1, color: '#ffb74d' },
             ]} label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
             labelStyle={{
               fontSize: '5px',
@@ -175,12 +176,12 @@ export default function HomePage() {
           />
         </div>
         <div className="col">
-          <Posts documents={documents}/>
+          <Posts documents={documents} />
         </div>
       </div>
-      
-      
-      
+
+
+
     </div>
-  ) 
+  )
 }
