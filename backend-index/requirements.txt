@@ -1,0 +1,6 @@
+pysolr
+wordcloud
+pandas
+requests
+setuptools
+Flask
