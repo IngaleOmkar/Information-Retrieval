@@ -50,14 +50,37 @@ export default function HomePage() {
     event.preventDefault();
 
     //fetch the data from the servers
-    const response = await fetch('http://127.0.0.1:5000/query?q=' + search);
+    const inputData = {
+      "query" : search, 
+      "start" : "",
+      "end" : "",
+      "sort_type" : ""
+    }
+    const response = await axios.post("http://127.0.0.1:5000/get_query", 
+      {
+          Headers: {
+              'Content-Type': 'application/json'
+          },
+          ...inputData
+      })
 
-    //convert the response to json
-    const data = await response.json();
+      //console.log("Response: ", response.data)
+      console.log(response.data.results.documents)
+      if(response.status === 200){
+        setDocuments(response.data.results.documents)
 
-    const data_json = JSON.parse(data);
+      }
+      else{
+        console.error("Error from backend: ", response.data.error)
+      }
+    // const response = await fetch('http://127.0.0.1:5000/query?q=' + search);
 
-    setDocuments(data_json['documents']);
+    // //convert the response to json
+    // const data = await response.json();
+
+    // const data_json = JSON.parse(data);
+
+    // setDocuments(data_json['documents']);
   }
 
   const toggleAdvancedSearchOptions = () => { setShowAdvanced(!showAdvanced) };
