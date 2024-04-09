@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-df = pd.read_csv('../data/original_dataTest.csv') # change the path to the data file
+df = pd.read_csv('../data/updated_data.csv') # change the path to the data file
 
 # Remove the unnamed index column
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
@@ -24,7 +24,7 @@ addFileIntoCore()
 
 @atexit.register
 def save():
-    df.to_csv('../data/original_dataTest.csv') #change name later
+    df.to_csv('../data/updated_data.csv') #change name later
 
 @app.route('/get_query', methods=['POST'])
 def get_query():
