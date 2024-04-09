@@ -110,6 +110,25 @@ def vote(df, doc_id , vote_type , query , start, end, sort_type):
     except Exception as e:
         print("Error: ", e)
 
+
+def query_test(query):
+    results = solr.search(f'{query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
+        'rows' : 5, # rows to display  
+        'fl': 'title, subreddit, body, score', # data to fetch, renive to get all at the cost of time  
+        'df': 'spellcheck', # default field to search
+        'defType': 'dismax', # use dismax query parser
+        'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
+    }) # have to sort according to "upvotes" for interactive search 
+
+    # iterate over the results and create a json object
+    response = {}
+    response['total_results'] = results.hits
+    response['query_time'] = results.qtime
+    response['documents'] = results.docs
+
+    return json.dumps(response)
+
+
 def normalQuery(query): #should pass something to it 
     start_time = time.time()
     results = solr.search(f'{query}', **{ # 'title: move' should be a variable, and append ~3 for fuzzy search  
