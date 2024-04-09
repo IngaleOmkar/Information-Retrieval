@@ -59,12 +59,20 @@ def addFileIntoCore():
     docs = df.to_dict(orient='records') 
     print(df.head())
 
-    solr.add(docs) 
- 
-    # Commit changes to make them visible 
-    solr.commit() 
- 
-    print("\nFiles indexed succesfully.\n") 
+    try:
+
+        # Add documents to Solr
+        solr.add(docs)
+
+        # Commit changes to make them visible
+        solr.commit()
+
+        print("Documents added and committed successfully.")
+        return True
+    
+    except Exception as e:
+        print("Error: ", e)
+        return e
 
 def vote(df, doc_id , vote_type , query , start, end, sort_type):
     # doc_id = request.form.get('id')

@@ -1,6 +1,6 @@
 import json
 from flask import Flask, jsonify, request
-from main import combinedQuery , vote
+from main import combinedQuery , vote, addFileIntoCore
 import pysolr 
 import pandas as pd
 import atexit
@@ -45,6 +45,15 @@ def vote_relevance():
     results , df = vote(df, doc_id, vote_type , query , start , end , sort_type)
 
     return results
+
+@app.route('/add_docs' , methods=['POST'])
+def add_docs():
+    resutls = addFileIntoCore()
+
+    if(resutls==True):
+        return {"message": "Documents added to core successfully"}
+    else:
+        return {"message": "Documents not added to core" , "error": resutls}
 
 if __name__ == '__main__':
    app.run(port=5000)
