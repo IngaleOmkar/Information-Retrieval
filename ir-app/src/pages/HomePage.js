@@ -38,49 +38,25 @@ export default function HomePage() {
     setChecked(event.target.checked);
   };
 
-  const documents = [
-    {
-      title: 'Title 1',
-      subreddit: 'ReactJS',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      date: '2021-10-01',
-      id: 'random1',
-      score: 10.14,
-      sentiment: 'positive'
-    },
-    {
-      title: 'Title 2',
-      subreddit: 'JavaScript',
-      body: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      date: '2021-10-02',
-      id: 'random2',
-      score: 15.23,
-      sentiment: 'negative'
-    },
-    {
-      title: 'Title 3',
-      subreddit: 'Python',
-      body: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      date: '2021-10-03',
-      id: 'random3',
-      score: 20.32,
-      sentiment: 'neutral'
-    }
-  ];
+  const [documents, setDocuments] = useState([]); //holds result of reddit posts
 
-  const handleSubmit = ( event ) => { 
-    console.log("Query")
-    setData([])
-    const apiUrl = `http:localhost:8000/search/${search}`
-    axios.get(apiUrl)
-    .then(response => {
-      // Handle success
-      console.log('Response:', response.data);
-    })
-    .catch(error => {
-      // Handle error
-      console.error('Error:', error);
-    }); 
+  const handleSubmit = async ( event ) => { 
+    // this function will test if the server is running for now
+    // a simple fetch command for: http://127.0.0.1:5000/query?q=tesla
+    // log the response 
+
+    // prevent the page from refreshing
+    event.preventDefault();
+
+    //fetch the data from the servers
+    const response = await fetch('http://127.0.0.1:5000/query?q=' + search);
+    
+    //convert the response to json
+    const data = await response.json();
+
+    const data_json = JSON.parse(data);
+
+    setDocuments(data_json['documents']);
   }
 
   const toggleAdvancedSearchOptions = () => {setShowAdvanced(!showAdvanced)};
@@ -135,7 +111,7 @@ export default function HomePage() {
               <div className="col">
                 <div className="row align-items-center">
                   <div className="col">
-                    <form className="form-inline my-2 my-lg-0">
+                    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
                       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setSearch(e.target.value)}/>
                     </form>
                   </div>
@@ -159,7 +135,7 @@ export default function HomePage() {
       {showAdvanced && <div style={{paddingTop: "25px"}}></div>}
 
       <div className="row" style={{width: "100%"}}>
-        <div className="col-4">
+        <div className="col-auto">
           <PieChart
             data={[
               // match color to sentiment

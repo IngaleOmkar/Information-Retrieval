@@ -15,7 +15,7 @@ const Posts = ({ documents }) => {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     };
   
-    // Function to sort documents by score
+    // // Function to sort documents by score
     const sortDocumentsByScore = (docs) => {
       if (sortOrder === 'asc') {
         return docs.sort((a, b) => a.score - b.score);
@@ -58,15 +58,15 @@ const Posts = ({ documents }) => {
           </div>
         </div>
 
-        {sortedDocuments.map((document, index) => (
+        {documents.map((document, index) => (
           <div key={index} className="post">
             <Card>
               <Card.Header className="d-flex justify-content-between align-items-center">
                 <div>
-                  <IoMdPerson />  {document.id} · {getSubRedditPill("r/" + document.subreddit)} 
+                  <IoMdPerson />  document.id · {getSubRedditPill("r/" + document.subreddit)} 
                 </div>
                 <div>
-                  {getSentimentPill(document.sentiment)}
+                  {/* {getSentimentPill(document.sentiment)} */}
                 </div>
               </Card.Header>
               <Card.Body>
@@ -78,7 +78,7 @@ const Posts = ({ documents }) => {
                       <AiFillLike /> {document.score} 
                     </div>
                     <div className="col">
-                      <FaCalendarAlt /> {document.date}
+                      {/* <FaCalendarAlt /> {document.date} */}
                     </div>
                   </div>
                 </Card.Text> 
