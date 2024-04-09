@@ -66,11 +66,10 @@ def addFileIntoCore():
  
     print("\nFiles indexed succesfully.\n") 
 
-def vote(doc_id , vote_type , query):
+def vote(df, doc_id , vote_type , query , start, end, sort_type):
     # doc_id = request.form.get('id')
     # vote_type = request.form.get('vote')
     try:
-        global df
 
         doc = solr.search(f'id: {doc_id}').docs[0]
         current_counter = doc['counter']
@@ -97,7 +96,8 @@ def vote(doc_id , vote_type , query):
         solr.commit()
 
         # return the updated document
-        normalQuery(query)
+        results = combinedQuery(query, start, end, sort_type)
+        return results , df
 
     except Exception as e:
         print("Error: ", e)
@@ -234,6 +234,78 @@ def sortAscending(searchString , sort_type="reddit_score asc"):
 
         print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
 
+# combined timeline, query, sort search
+def combinedQuery(query, start="", end="", sort_type=""):
+    start_time = time.time()
+
+    if (start == ""):
+        start = "*"
+    else:
+        start += "T00:00:00Z"
+    if (end == ""):
+        end = "NOW"
+    else:
+        end += "T23:59:59Z"
+
+    if (sort_type == ""):
+        results = solr.search(f'{query}', **{
+            'rows' : 5,
+            'fl': 'id, title, subreddit, created , body, score',
+            'fq': 'created:[' + start + ' TO ' + end + ']',
+            'df': 'spellcheck',
+            'defType': 'dismax', # use dismax query parser
+            'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
+        })
+    else:
+        results = solr.search(f'{query}', **{
+            'rows' : 5,
+            'fl': 'id, title, subreddit,created, body, score',
+            'fq': 'created:[' + start + ' TO ' + end + ']',
+            'df': 'spellcheck',
+            'sort': sort_type,
+            'defType': 'dismax', # use dismax query parser
+            'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
+        })
+     
+    # The `Results` object stores total results found, by default the top 
+    # ten most relevant results and any additional data like 
+    # facets/highlighting/spelling/etc. 
+    print("Found {0} result(s).\n".format(len(results))) 
+    print("Found spellcheck: {0}.\n".format(results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"))
+ 
+    # Just loop over it to access the results. 
+    # results store all of the data from solr, format(result["smth"]) to print that result 
+    for result in results: 
+        print("The title is '{0}'.".format(result['title'])) 
+        print("The subreddit is '{0}'.".format(result['subreddit'])) 
+        print("The score is '{0}'.".format(result['score']))
+         
+        if (format(result['body']) == "['NaN']"): 
+            print("Body does not exist.\n") 
+         
+        else: 
+            print("The body is '{0}'.\n".format(result['body'])) 
+         
+        # try: # dosnt work after importing data with pandas as it changes empty to NaN 
+        #     print("The body is '{0}'.\n".format(result['body'])) 
+ 
+        # except Exception as e: 
+        #     print("Body does not exist\n") 
+ 
+ 
+    end_time = time.time() 
+    elapsed_time = end_time - start_time 
+         
+    # Print the elapsed time 
+    print("\n\nElapsed time: %.3f seconds\n" %elapsed_time) 
+
+    return {
+        "total_results": results.hits,
+        "query_time" : results.qtime,
+        "documents": results.docs,
+        "spellcheck": results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"
+    }
+
 def main():
     global df
     while(1): #to remove
@@ -243,7 +315,8 @@ def main():
         print("3. Timeline Search")
         print("4. Sort Results")
         print("5. Vote on a post")
-        print("6. Exit")
+        print("6. Combined Query")
+        print("7. Exit")
         choice = int(input("Enter your choice: "))
         if choice == 1:
             addFileIntoCore()
@@ -272,6 +345,12 @@ def main():
             vote_type = input("Enter the vote type: [up/down]")
             query = input("Enter the query: ")
             vote(doc_id, vote_type , query)
+        elif choice == 6:
+            query = input("Enter the query: ")
+            start = input("Enter the start date in YYYY-MM-DD format: ")
+            end = input("Enter the end date in YYYY-MM-DD format: ")
+            sort_type = input("Enter the sort type: [reddit_score asc/desc]")
+            combinedQuery(query, start, end, sort_type)
         else:
             @atexit.register
             def save():

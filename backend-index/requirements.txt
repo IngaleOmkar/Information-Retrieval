@@ -3,3 +3,4 @@ wordcloud
 pandas
 requests
 setuptools
+Flask
