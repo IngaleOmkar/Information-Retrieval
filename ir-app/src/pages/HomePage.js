@@ -16,30 +16,47 @@ import Posts from "../components/Posts";
 import { PieChart } from 'react-minimal-pie-chart';
 import { performQuery } from "../api";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 export default function HomePage() {
   const [search, setSearch] = useState(''); //search bar 
-  const [data, setData] = useState([]); //holds result of reddit posts
-  const [value, setValue] = React.useState([
-    dayjs('2024-04-17'),
-    dayjs('2024-04-21'),
-  ]);
-  const [checked, setChecked] = React.useState(true);
-
   // Create boolean flag for showing advanced search options
   const [showAdvanced, setShowAdvanced] = React.useState(false);
-
-
-  // Set filter options 
+  //Set filter options 
   const [timeFilter, setTimeFilter] = React.useState('Time');
-
   // Submit filter options
   const [time, setTime] = React.useState('date desc');
 
-  const handleDateToggle = (event) => {
-    setChecked(event.target.checked);
-  };
+  // const handleDateToggle = (event) => {
+  //   setChecked(event.target.checked);
+  // };
 
   const [documents, setDocuments] = useState([]); //holds result of reddit posts
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const resetTime = () => { 
+    setStartDate(null);
+    setEndDate(null);
+  }
+
+  const convertToYYYYMMDD = (input) => { 
+
+    if (input == null) { 
+      return ""
+    }
+    
+    const date = new Date(input);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Adding 1 to month because months are zero-indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    const output = `${year}-${month}-${day}`;
+
+    return output
+
+  }
 
   const handleSubmit = async (event) => {
     // this function will test if the server is running for now
@@ -48,12 +65,17 @@ export default function HomePage() {
 
     // prevent the page from refreshing
     event.preventDefault();
+    //formatting datepicker to yyyy/mm/dd
+    const start = convertToYYYYMMDD(startDate);
+    const end = convertToYYYYMMDD(endDate);
+    console.log(start)
+    console.log(end)
 
     //fetch the data from the servers
     const inputData = {
       "query" : search, 
-      "start" : "",
-      "end" : "",
+      "start" : start,
+      "end" : end,
       "sort_type" : ""
     }
     const response = await axios.post("http://127.0.0.1:5000/get_query", 
@@ -147,9 +169,8 @@ export default function HomePage() {
 
   return (
     <div id="Page" className="Page" style={{ backgroundColor: 'white', height: '100vh', font: '-moz-initial' }}>
-
-      <Navbar className="navbar-dark bg-dark fixed-top">
-        <div className="row" style={{ width: "100%" }}>
+      <Navbar className="navbar-dark bg-dark">
+        <div className="row" style={{ width: "100%",zIndex:"999" }}>
           <div className="col">
             <div className="row">
               <div className="col-auto" style={{ paddingLeft: "15px" }}>
@@ -174,16 +195,26 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div >
+          <div style={{marginLeft:"20px"}}>
+          <span className="navbar-brand mb-0 h3">Search from: </span>
+          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
+          />
+          <span style={{marginLeft:"10px"}}className="navbar-brand mb-0 h3"> to:</span>
+          <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+          <button className="btn btn-outline-success my-2 my-sm-0"
+                      style={{ marginLeft: "10px" }}
+                      onClick={() => resetTime()} >
+                      Reset 
+                    </button>
             {showAdvanced ? advancedSearchOptions() : null}
           </div>
         </div>
       </Navbar>
 
-      {showAdvanced && <div style={{ paddingTop: "25px" }}></div>}
+      {showAdvanced && <div style={{ paddingTop: "25px"}}></div>}
 
-      <div className="row" style={{ width: "100%" }}>
-        <div className="col-auto">
+      <div className="row align-items-start" style={{ width: "100%",marginTop:'30px',zIndex:'1'}}>
+        <div className="col-auto sticky-top" style={{marginLeft:'10px',marginTop:'50px',maxWidth:'25%',zIndex:'0'}}>
           <PieChart
             data={[
               // match color to sentiment
@@ -197,8 +228,15 @@ export default function HomePage() {
               fill: 'black',
             }}
           />
+          {/* PLACEHOLDER FOR WORD CLOUD */}
+          <div className="col-auto" style={{marginTop:"30px"}}>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra consequat urna, nec iaculis purus ullamcorper nec. Mauris laoreet odio a justo tincidunt feugiat. Phasellus nec diam non dui rutrum consequat. Vivamus consequat orci nec ex sollicitudin varius. Vestibulum id lectus quis felis facilisis sollicitudin. Vivamus varius odio et lacus pharetra volutpat. Nunc eu elit ut elit congue fermentum. Donec sed est a ligula vestibulum consequat. Maecenas ultricies, libero vel eleifend ultricies, enim odio aliquet nunc, nec consectetur est purus vitae eros.</p>
+            <p>Nullam nec velit id eros accumsan mattis. Aliquam eget metus sed enim hendrerit placerat in vitae tortor. Vestibulum eu lacus in magna rutrum auctor. Morbi auctor tempus ex nec pellentesque. Nam nec ultricies elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse ullamcorper nibh vitae ipsum maximus, vel faucibus tortor viverra. In hac habitasse platea dictumst. Ut quis diam eu sapien accumsan pharetra. Vivamus gravida tellus nec est aliquam, vitae eleifend mauris tincidunt. Nulla facilisi. Duis rhoncus, sapien ac consectetur volutpat, mi augue gravida ex, at consectetur nisl nulla auctor dolor. In rutrum ligula eget augue mattis auctor. Proin dictum nibh a mauris hendrerit, eu fermentum quam ultricies.</p>
+
+          </div>
+
         </div>
-        <div className="col">
+        <div className="col" >
           <Posts documents={documents} />
         </div>
       </div>
