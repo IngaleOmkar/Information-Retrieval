@@ -15,8 +15,9 @@ import dayjs from 'dayjs';
 import Posts from "../components/Posts";
 import { PieChart } from 'react-minimal-pie-chart';
 import { performQuery } from "../api";
-
+import Button from "react-bootstrap/esm/Button";
 import DatePicker from "react-datepicker";
+import { FaMicrochip } from "react-icons/fa6";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -216,6 +217,7 @@ export default function HomePage() {
 
       <div className="row align-items-start" style={{ width: "100%",marginTop:'30px',zIndex:'1'}}>
         <div className="col-auto sticky-top" style={{marginLeft:'10px',marginTop:'50px',maxWidth:'25%',zIndex:'0'}}>
+          <h3>Distribution of Sentiments in Search Results</h3>
           <PieChart
             data={[
               // match color to sentiment
@@ -231,13 +233,28 @@ export default function HomePage() {
           />
           {/* PLACEHOLDER FOR WORD CLOUD */}
           <div className="col-auto" style={{marginTop:"30px"}}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra consequat urna, nec iaculis purus ullamcorper nec. Mauris laoreet odio a justo tincidunt feugiat. Phasellus nec diam non dui rutrum consequat. Vivamus consequat orci nec ex sollicitudin varius. Vestibulum id lectus quis felis facilisis sollicitudin. Vivamus varius odio et lacus pharetra volutpat. Nunc eu elit ut elit congue fermentum. Donec sed est a ligula vestibulum consequat. Maecenas ultricies, libero vel eleifend ultricies, enim odio aliquet nunc, nec consectetur est purus vitae eros.</p>
-            <p>Nullam nec velit id eros accumsan mattis. Aliquam eget metus sed enim hendrerit placerat in vitae tortor. Vestibulum eu lacus in magna rutrum auctor. Morbi auctor tempus ex nec pellentesque. Nam nec ultricies elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse ullamcorper nibh vitae ipsum maximus, vel faucibus tortor viverra. In hac habitasse platea dictumst. Ut quis diam eu sapien accumsan pharetra. Vivamus gravida tellus nec est aliquam, vitae eleifend mauris tincidunt. Nulla facilisi. Duis rhoncus, sapien ac consectetur volutpat, mi augue gravida ex, at consectetur nisl nulla auctor dolor. In rutrum ligula eget augue mattis auctor. Proin dictum nibh a mauris hendrerit, eu fermentum quam ultricies.</p>
-
+            <h5>Legend</h5>
+            <div>
+              <Button variant='success' size="sm" disabled>Positive</Button>
+              <Button variant='warning' size="sm" disabled style={{margin: "5px"}}>Neutral</Button>
+              <Button variant='danger' size="sm" disabled>Negative</Button>
+            </div>
           </div>
 
         </div>
         <div className="col" >
+          <div className='row justify-content-between'>
+            <div className='col-auto'>
+              <h2>Search Results</h2>
+              {/* Replace with variables depending on page numbers */}
+              <h6><b><i>Showing results 10 to 20 from 9362</i></b></h6> 
+            </div>
+            <div className='col-auto'>
+              <Button variant="primary" size="sm">
+                <FaMicrochip /> Generate Insight
+              </Button>
+            </div>
+          </div>
           <Posts documents={documents} />
         </div>
       </div>

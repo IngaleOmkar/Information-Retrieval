@@ -1,0 +1,5 @@
+127.0.0.1 - - [11/Apr/2024:09:22:59 +0000] "GET /solr/cz4034/admin/ping/ HTTP/1.1" 200 399
+127.0.0.1 - - [11/Apr/2024:09:23:00 +0000] "GET /solr/cz4034/admin/ping/ HTTP/1.1" 200 398
+127.0.0.1 - - [11/Apr/2024:09:23:00 +0000] "POST /solr/cz4034/update/ HTTP/1.1" 200 61
+127.0.0.1 - - [11/Apr/2024:09:23:01 +0000] "POST /solr/cz4034/update/?commit=true HTTP/1.1" 200 157
+127.0.0.1 - - [11/Apr/2024:09:27:18 +0000] "GET /solr/cz4034/select/?q=hello&rows=5&fl=id%2C+title%2C+subreddit%2C+created+%2C+body%2C+score&fq=created%3A%5B%2A+TO+NOW%5D&df=spellcheck&defType=dismax&bf=counter%5E2&wt=json HTTP/1.1" 200 1023
