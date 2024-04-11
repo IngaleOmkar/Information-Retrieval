@@ -18,6 +18,8 @@ import { performQuery } from "../api";
 import Button from "react-bootstrap/esm/Button";
 import DatePicker from "react-datepicker";
 import { FaMicrochip } from "react-icons/fa6";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -30,16 +32,20 @@ export default function HomePage() {
   const [time, setTime] = React.useState('date desc');
   const [sentiment,setSentiment] = React.useState("Sentiment");
 
-  // const handleDateToggle = (event) => {
-  //   setChecked(event.target.checked);
-  // };
-
   const [documents, setDocuments] = useState([]); //holds result of reddit posts
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  const [queryTime, setQueryTime] = useState(''); // time to execute the query
+
   // set a boolean flag to check if word cloud was generated 
   const [wordCloud, setWordCloud] = useState(false);
+
+  // The following are for pagination
+  const [page, setPage] = useState(1); // current page number
+  const [totalPages, setTotalPages] = useState(1);
+  const postsPerPage = 10;
+  const [documentsForCurrentPage, setDocumentsForCurrentPage] = useState([]);
 
   const resetTime = () => { 
     setStartDate(null);
@@ -93,8 +99,15 @@ export default function HomePage() {
     //console.log("Response: ", response.data)
     console.log(response.data.results.documents)
     if(response.status === 200){
-      setDocuments(response.data.results.documents);
+      setDocuments(response.data.results.documents); // all the received documents
       setWordCloud(true);
+
+      // set the total number of pages
+      setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
+      // set the documents for the current page
+      setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
+
+      setQueryTime(response.data.results.query_time);
     }
     else{
       console.error("Error from backend: ", response.data.error);
@@ -124,6 +137,14 @@ export default function HomePage() {
     }
     const results = await performQuery(inputData, type)
     console.log(results)
+  }
+
+  // handle page change
+  const handlePageChange = (event, value) => {
+    setPage(value);
+
+    // set the documents for the current page
+    setDocumentsForCurrentPage(documents.slice((value - 1) * postsPerPage, value * postsPerPage));
   }
 
   return (
@@ -172,7 +193,7 @@ export default function HomePage() {
       <div className="row align-items-start" style={{ width: "100%",marginTop:'30px',zIndex:'1'}}>
         <div className="col-auto sticky-top" style={{marginLeft:'10px',marginTop:'50px',maxWidth:'25%',zIndex:'0'}}>
           <h3>Distribution of Sentiments in Search Results</h3>
-          <PieChart
+          {wordCloud && <PieChart
             data={[
               // match color to sentiment
               { title: 'One', value: 1, color: '#66bb6a' },
@@ -184,7 +205,7 @@ export default function HomePage() {
               fontFamily: 'sans-serif',
               fill: 'black',
             }}
-          />
+          />}
           {/* PLACEHOLDER FOR WORD CLOUD */}
           <div className="col-auto" style={{marginTop:"30px"}}>
             <h5>Legend</h5>
@@ -195,7 +216,7 @@ export default function HomePage() {
             </div>
           </div>
           <h3 style={{paddingTop: "15px"}}>Generated WordCloud</h3>
-          <img src={require("../assets/images/wordcloud.png")} alt="Word Cloud" style={{maxWidth:'100%',maxHeight:'100%'}}/>
+          {wordCloud && <img src={require("../assets/images/wordcloud.png")} alt="Word Cloud" style={{maxWidth:'100%',maxHeight:'100%'}}/>}
         </div>
         <div className="col" >
           <div className='row justify-content-between'>
@@ -224,7 +245,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Replace with variables depending on page numbers */}
-              <h6><b><i>Showing results 10 to 20 from 9362</i></b></h6> 
+              {wordCloud && <h6><b><i>Showing results {((page - 1) * postsPerPage) + 1} to {(page * postsPerPage > documents.length)?documents.length:(page * postsPerPage)} of {documents.length}. Query Executed in {queryTime} ms.</i></b></h6> }
             </div>
             <div className='col-auto'>
               <Button variant="primary" size="sm">
@@ -232,12 +253,13 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <Posts documents={documents} />
+          <Posts documents={documentsForCurrentPage} />
+          {/* Create a div that occupies the entire column and centers the lements within it */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '30px'}}>
+            {wordCloud && <Pagination count={totalPages} onChange={handlePageChange} />}
+          </div>
         </div>
       </div>
-
-
-
     </div>
   )
 }
