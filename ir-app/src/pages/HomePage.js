@@ -23,10 +23,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function HomePage() {
   const [search, setSearch] = useState(''); //search bar 
-  // Create boolean flag for showing advanced search options
-  const [showAdvanced, setShowAdvanced] = React.useState(false);
   //Set filter options 
   const [timeFilter, setTimeFilter] = React.useState('Date Posted');
+  const [sentimentFilter, setSentimentFilter] = React.useState('Sentiment');
   // Submit filter options
   const [time, setTime] = React.useState('date desc');
   const [sentiment,setSentiment] = React.useState("Sentiment");
@@ -106,8 +105,6 @@ export default function HomePage() {
 
     // setDocuments(data_json['documents']);
   }
-
-  const toggleAdvancedSearchOptions = () => { setShowAdvanced(!showAdvanced) };
   
   const handleSearch = async (type) => {
     // type can be either "query" or "vote"
@@ -134,41 +131,6 @@ export default function HomePage() {
     console.log(results)
   }
 
-  const advancedSearchOptions = () => {
-    return (
-      <div className="d-flex align-items-center">
-        <DropdownButton
-          id="time"
-          variant="outline-light"
-          menuVariant="dark"
-          title={timeFilter}
-          className="mt-2"
-          style={{ marginLeft: '15px' }}>
-          <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >
-          </Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
-          <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
-        </DropdownButton>
-        <DropdownButton
-          id="time"
-          variant="outline-light"
-          menuVariant="dark"
-          title={sentiment}
-          className="mt-2"
-          style={{ marginLeft: '15px' }}>
-          <Dropdown.Item onClick={() => { setSentiment("Sentiment") }} >
-          </Dropdown.Item>
-          
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={() => { setSentiment("Positive"); }}>Positive</Dropdown.Item>
-          <Dropdown.Item onClick={() => { setSentiment("Neutral"); }}>Neutral</Dropdown.Item>
-          <Dropdown.Item onClick={() => { setSentiment("Negative"); }}>Negative</Dropdown.Item>
-        </DropdownButton>
-      </div>
-    );
-  }
-
   return (
     <div id="Page" className="Page" style={{ backgroundColor: 'white', height: '100vh', font: '-moz-initial' }}>
       <Navbar className="navbar-dark bg-dark">
@@ -189,8 +151,8 @@ export default function HomePage() {
                   <div className="col-auto">
                     <button className="btn btn-outline-success my-2 my-sm-0"
                       style={{ marginLeft: "10px" }}
-                      onClick={() => setShowAdvanced(!showAdvanced)} >
-                      {showAdvanced ? "Hide" : "Show"} Filters
+                      onClick={handleSubmit} >
+                      Seacrh
                     </button>
                   </div>
                 </div>
@@ -198,22 +160,19 @@ export default function HomePage() {
             </div>
           </div>
           <div style={{marginLeft:"20px"}}>
-          <span className="navbar-brand mb-0 h3">Search from: </span>
-          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
-          />
-          <span style={{marginLeft:"10px"}}className="navbar-brand mb-0 h3"> to:</span>
-          <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-          <button className="btn btn-outline-success my-2 my-sm-0"
-                      style={{ marginLeft: "10px" }}
-                      onClick={() => resetTime()} >
-                      Reset 
-                    </button>
-            {showAdvanced ? advancedSearchOptions() : null}
+            <span className="navbar-brand mb-0 h3">Search from: </span>
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
+            <span style={{marginLeft:"10px"}}className="navbar-brand mb-0 h3"> to:</span>
+            <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+            <button className="btn btn-outline-success my-2 my-sm-0"
+                        style={{ marginLeft: "10px" }}
+                        onClick={() => resetTime()} >
+                        Reset 
+            </button>
+          
           </div>
         </div>
       </Navbar>
-
-      {showAdvanced && <div style={{ paddingTop: "25px"}}></div>}
 
       <div className="row align-items-start" style={{ width: "100%",marginTop:'30px',zIndex:'1'}}>
         <div className="col-auto sticky-top" style={{marginLeft:'10px',marginTop:'50px',maxWidth:'25%',zIndex:'0'}}>
@@ -245,7 +204,29 @@ export default function HomePage() {
         <div className="col" >
           <div className='row justify-content-between'>
             <div className='col-auto'>
-              <h2>Search Results</h2>
+              
+              <div className="row">
+                <div className="col-auto">
+                  <h2>Search Results</h2>
+                </div>
+                <div className="col-auto">
+                  <DropdownButton id="time" variant="outline-dark" menuVariant="light" title={timeFilter}>
+                    <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >Time</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
+                  </DropdownButton>
+                </div>
+                <div className="col-auto">
+                <DropdownButton id="Sentiment" variant="outline-dark" menuVariant="light" title={sentimentFilter}>
+                    <Dropdown.Item onClick={() => { setSentimentFilter("Sentiment") }}>Sentiment</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={() => { setSentimentFilter("Positive"); setSentiment('Positive') }}>Positive</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setSentimentFilter("Negative"); setSentiment('Negative') }}>Negative</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setSentimentFilter("Neutral"); setSentiment('Neutral') }}>Neutral</Dropdown.Item>
+                  </DropdownButton>
+                </div>
+              </div>
               {/* Replace with variables depending on page numbers */}
               <h6><b><i>Showing results 10 to 20 from 9362</i></b></h6> 
             </div>
