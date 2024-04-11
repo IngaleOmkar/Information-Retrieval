@@ -38,6 +38,9 @@ export default function HomePage() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  // set a boolean flag to check if word cloud was generated 
+  const [wordCloud, setWordCloud] = useState(false);
+
   const resetTime = () => { 
     setStartDate(null);
     setEndDate(null);
@@ -69,8 +72,8 @@ export default function HomePage() {
     //formatting datepicker to yyyy/mm/dd
     const start = convertToYYYYMMDD(startDate);
     const end = convertToYYYYMMDD(endDate);
-    console.log(start)
-    console.log(end)
+    console.log(start);
+    console.log(end);
 
     //fetch the data from the servers
     const inputData = {
@@ -78,32 +81,24 @@ export default function HomePage() {
       "start" : start,
       "end" : end,
       "sort_type" : ""
-    }
+    };
     const response = await axios.post("http://127.0.0.1:5000/get_query", 
-      {
-          Headers: {
-              'Content-Type': 'application/json'
-          },
-          ...inputData
-      })
+    {
+        Headers: {
+            'Content-Type': 'application/json'
+        },
+        ...inputData
+    });
 
-      //console.log("Response: ", response.data)
-      console.log(response.data.results.documents)
-      if(response.status === 200){
-        setDocuments(response.data.results.documents)
-
-      }
-      else{
-        console.error("Error from backend: ", response.data.error)
-      }
-    // const response = await fetch('http://127.0.0.1:5000/query?q=' + search);
-
-    // //convert the response to json
-    // const data = await response.json();
-
-    // const data_json = JSON.parse(data);
-
-    // setDocuments(data_json['documents']);
+    //console.log("Response: ", response.data)
+    console.log(response.data.results.documents)
+    if(response.status === 200){
+      setDocuments(response.data.results.documents);
+      setWordCloud(true);
+    }
+    else{
+      console.error("Error from backend: ", response.data.error);
+    }
   }
   
   const handleSearch = async (type) => {
@@ -199,7 +194,8 @@ export default function HomePage() {
               <Button variant='danger' size="sm" disabled>Negative</Button>
             </div>
           </div>
-
+          <h3 style={{paddingTop: "15px"}}>Generated WordCloud</h3>
+          <img src={require("../assets/images/wordcloud.png")} alt="Word Cloud" style={{maxWidth:'100%',maxHeight:'100%'}}/>
         </div>
         <div className="col" >
           <div className='row justify-content-between'>

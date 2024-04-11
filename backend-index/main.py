@@ -217,6 +217,30 @@ def timelineSearch(query, start , end):
 
     generateWordcloud(text)
 
+def generateWordCloudWithResults(results):
+    print("in method")
+    text = ''
+    for result in results: 
+        if (format(result['body']) == "['NaN']"): 
+            text += str(result['title']) + " "
+        else: 
+            body = re.sub(r'\n+', ' ', str(result['body']))
+            text += str(result['title']) + " " + body + " "
+        #print(text)
+    stopwords = set(STOPWORDS)
+    # generate the word cloud
+    wordcloud = WordCloud(width = 800, height = 800, 
+                background_color ='white', 
+                stopwords = stopwords, 
+                min_font_size = 10).generate(text)
+    
+    print("Before saving")
+    
+    # save the word cloud to a file
+    # wordcloud.to_file('static/wordcloud.png')
+    wordcloud.to_file('../ir-app/src/assets/images/wordcloud.png')
+
+
 def generateWordcloud(text):
     # generate the word cloud
     # remove the stopwords
@@ -311,13 +335,6 @@ def combinedQuery(query, start="", end="", sort_type=""):
          
         else: 
             print("The body is '{0}'.\n".format(result['body'])) 
-         
-        # try: # dosnt work after importing data with pandas as it changes empty to NaN 
-        #     print("The body is '{0}'.\n".format(result['body'])) 
- 
-        # except Exception as e: 
-        #     print("Body does not exist\n") 
- 
  
     end_time = time.time() 
     elapsed_time = end_time - start_time 
@@ -330,6 +347,13 @@ def combinedQuery(query, start="", end="", sort_type=""):
     response["query_time"] = results.qtime
     response["documents"] = results.docs
     response["spellcheck"] = results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"
+    
+    
+    print("GENERATING WORDCLOUD")
+    generateWordCloudWithResults(results)
+    print("GENERATED WORDCLOUD")
+    
+    
     return response
 
 def main():
