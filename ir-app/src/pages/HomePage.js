@@ -25,9 +25,10 @@ export default function HomePage() {
   // Create boolean flag for showing advanced search options
   const [showAdvanced, setShowAdvanced] = React.useState(false);
   //Set filter options 
-  const [timeFilter, setTimeFilter] = React.useState('Time');
+  const [timeFilter, setTimeFilter] = React.useState('Date Posted');
   // Submit filter options
   const [time, setTime] = React.useState('date desc');
+  const [sentiment,setSentiment] = React.useState("Sentiment");
 
   // const handleDateToggle = (event) => {
   //   setChecked(event.target.checked);
@@ -143,7 +144,6 @@ export default function HomePage() {
           className="mt-2"
           style={{ marginLeft: '15px' }}>
           <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >
-            Time
           </Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
@@ -153,15 +153,16 @@ export default function HomePage() {
           id="time"
           variant="outline-light"
           menuVariant="dark"
-          title={timeFilter}
+          title={sentiment}
           className="mt-2"
           style={{ marginLeft: '15px' }}>
-          <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >
-            Time
+          <Dropdown.Item onClick={() => { setSentiment("Sentiment") }} >
           </Dropdown.Item>
+          
           <Dropdown.Divider />
-          <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
-          <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setSentiment("Positive"); }}>Positive</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setSentiment("Neutral"); }}>Neutral</Dropdown.Item>
+          <Dropdown.Item onClick={() => { setSentiment("Negative"); }}>Negative</Dropdown.Item>
         </DropdownButton>
       </div>
     );
