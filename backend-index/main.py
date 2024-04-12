@@ -299,7 +299,7 @@ def combinedQuery(query, start="", end="", sort_type=""):
 
     if (sort_type == ""):
         results = solr.search(f'{query}', **{
-            'rows' : 5,
+            'rows' : 10000,
             'fl': 'id, title, subreddit, created , body, score',
             'fq': 'created:[' + start + ' TO ' + end + ']',
             'df': 'spellcheck',
@@ -308,7 +308,7 @@ def combinedQuery(query, start="", end="", sort_type=""):
         })
     else:
         results = solr.search(f'{query}', **{
-            'rows' : 5,
+            'rows' : 10000,
             'fl': 'id, title, subreddit,created, body, score',
             'fq': 'created:[' + start + ' TO ' + end + ']',
             'df': 'spellcheck',
