@@ -29,6 +29,7 @@ export default function HomePage() {
   // Submit filter options
   const [time, setTime] = React.useState('date desc');
   const [sentiment,setSentiment] = React.useState("Sentiment");
+  
 
   // const handleDateToggle = (event) => {
   //   setChecked(event.target.checked);
@@ -155,7 +156,7 @@ export default function HomePage() {
             </div>
           </div>
           <div style={{marginLeft:"20px"}}>
-            <span className="navbar-brand mb-0 h3">Search from: </span>
+            <span className="navbar-brand mb-0 h3" style={{display:'inline-block'}}>Search from: </span>
             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
             <span style={{marginLeft:"10px"}}className="navbar-brand mb-0 h3"> to:</span>
             <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
@@ -224,7 +225,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Replace with variables depending on page numbers */}
-              <h6><b><i>Showing results 10 to 20 from 9362</i></b></h6> 
+              <h6><b><i>Showing results 10 to 20 from 9362 (0.000000002 seconds)</i></b></h6> 
             </div>
             <div className='col-auto'>
               <Button variant="primary" size="sm">
