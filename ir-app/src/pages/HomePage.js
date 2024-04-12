@@ -28,10 +28,11 @@ export default function HomePage() {
   //Set filter options 
   const [timeFilter, setTimeFilter] = React.useState('Date Posted');
   const [sentimentFilter, setSentimentFilter] = React.useState('Sentiment');
+  const [scoreFilter, setScoreFilter] = React.useState('Reddit Score');
   // Submit filter options
   const [time, setTime] = React.useState('date desc');
   const [sentiment,setSentiment] = React.useState("Sentiment");
-
+  const [score,setScore] = React.useState("");
   const [documents, setDocuments] = useState([]); //holds result of reddit posts
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -78,16 +79,17 @@ export default function HomePage() {
     //formatting datepicker to yyyy/mm/dd
     const start = convertToYYYYMMDD(startDate);
     const end = convertToYYYYMMDD(endDate);
-    console.log(start);
-    console.log(end);
+
 
     //fetch the data from the servers
     const inputData = {
       "query" : search, 
       "start" : start,
       "end" : end,
-      "sort_type" : ""
+      "sort_type" : score
     };
+
+    console.log(inputData)
     const response = await axios.post("http://127.0.0.1:5000/get_query", 
     {
         Headers: {
@@ -168,7 +170,7 @@ export default function HomePage() {
                     <button className="btn btn-outline-success my-2 my-sm-0"
                       style={{ marginLeft: "10px" }}
                       onClick={handleSubmit} >
-                      Seacrh
+                      Search
                     </button>
                   </div>
                 </div>
@@ -228,7 +230,7 @@ export default function HomePage() {
                 </div>
                 <div className="col-auto">
                   <DropdownButton id="time" variant="outline-dark" menuVariant="light" title={timeFilter}>
-                    <Dropdown.Item onClick={() => { setTimeFilter("Time") }} >Time</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setTimeFilter("Date Posted") }} >Date Posted</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
@@ -241,6 +243,14 @@ export default function HomePage() {
                     <Dropdown.Item onClick={() => { setSentimentFilter("Positive"); setSentiment('Positive') }}>Positive</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setSentimentFilter("Negative"); setSentiment('Negative') }}>Negative</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setSentimentFilter("Neutral"); setSentiment('Neutral') }}>Neutral</Dropdown.Item>
+                  </DropdownButton>
+                </div>
+                <div className="col-auto">
+                  <DropdownButton id="score" variant="outline-dark" menuVariant="light" title={scoreFilter}>
+                    <Dropdown.Item onClick={() => { setScoreFilter("Reddit Score"); setScore("") }} >Reddit Score</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={() => { setScoreFilter("Ascending"); setScore('reddit_score asc') }}>Ascending</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setScoreFilter("Descending"); setScore('reddit_score desc') }}>Descending</Dropdown.Item>
                   </DropdownButton>
                 </div>
               </div>
