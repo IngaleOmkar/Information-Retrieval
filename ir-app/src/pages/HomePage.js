@@ -307,9 +307,9 @@ export default function HomePage() {
                   {wordCloud && <h6><b><i>Showing results {((page - 1) * postsPerPage) + 1} to {(page * postsPerPage > documents.length) ? documents.length : (page * postsPerPage)} of {documents.length}. Query Executed in {queryTime} ms.</i></b></h6>}
                 </div>
                 <div className='col-auto'>
-                  <Button variant="primary" size="sm">
+                  {/* <Button variant="primary" size="sm">
                     <FaMicrochip /> Generate Insight
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
               <Posts documents={documentsForCurrentPage} handleVote={handleVote} />
