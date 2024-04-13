@@ -4,6 +4,7 @@ import { AiFillLike } from "react-icons/ai";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 import React from 'react';
+import { GrScorecard } from "react-icons/gr";
 import { useState } from 'react';
 
 const Posts = ({ documents }) => {
@@ -51,7 +52,7 @@ const Posts = ({ documents }) => {
             <Card style={{margin: "5px"}}>
               <Card.Header className="d-flex justify-content-between align-items-center">
                 <div>
-                  <IoMdPerson />  document.id · {getSubRedditPill("r/" + document.subreddit)} 
+                  {getSubRedditPill("r/" + document.subreddit)} 
                 </div>
                 <div>
                   {/* {getSentimentPill(document.sentiment)} */}
@@ -63,10 +64,10 @@ const Posts = ({ documents }) => {
                 <Card.Text> 
                   <div className='row' style={{width: "100%"}}>
                     <div className="col-auto">
-                      <AiFillLike /> {document.score} 
+                      <GrScorecard /> {document.score} 
                     </div>
                     <div className="col">
-                      {/* <FaCalendarAlt /> {document.date} */}
+                      <FaCalendarAlt /> {(document.created + "").substring(0, 10)}
                     </div>
                   </div>
                 </Card.Text> 
