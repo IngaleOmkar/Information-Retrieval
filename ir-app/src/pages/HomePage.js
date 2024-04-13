@@ -30,7 +30,7 @@ export default function HomePage() {
   const [sentimentFilter, setSentimentFilter] = React.useState('Sentiment');
   const [scoreFilter, setScoreFilter] = React.useState('Reddit Score');
   // Submit filter options
-  const [time, setTime] = React.useState('date desc');
+  const [time, setTime] = React.useState("");
   const [sentiment,setSentiment] = React.useState("Sentiment");
   const [score,setScore] = React.useState("");
   const [documents, setDocuments] = useState([]); //holds result of reddit posts
