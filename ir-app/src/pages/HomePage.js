@@ -72,60 +72,60 @@ export default function HomePage() {
 
   }
 
-  console.log("Spellcheck: ", spellcheck)
-
-  const handleSubmit = async (event) => {
-    setLoading(true);
+  const handleSubmit = async (event , search) => {
     // this function will test if the server is running for now
     // a simple fetch command for: http://127.0.0.1:5000/query?q=tesla
     // log the response 
 
+    event.stopPropagation();
     // prevent the page from refreshing
     event.preventDefault();
+    setLoading(true);
     //formatting datepicker to yyyy/mm/dd
     const start = convertToYYYYMMDD(startDate);
     const end = convertToYYYYMMDD(endDate);
 
-    if (search != "") { 
-    //fetch the data from the servers
-        const inputData = {
-          "query" : search, 
-          "start" : start,
-          "end" : end,
-          "sort_type" : {
-            "time" : time,
-            "sentiment" : sentiment,
-            "score" : score
-          }
-        };
+    if (search != "") {
+      //fetch the data from the servers
+      const inputData = {
+        "query": search,
+        "start": start,
+        "end": end,
+        "sort_type": {
+          "time": time,
+          "sentiment": sentiment,
+          "score": score
+        }
+      };
 
-        console.log(inputData)
-        const response = await axios.post("http://127.0.0.1:5000/get_query", 
+      console.log(inputData)
+      const response = await axios.post("http://127.0.0.1:5000/get_query",
         {
-            Headers: {
-                'Content-Type': 'application/json'
-            },
-            ...inputData
+          Headers: {
+            'Content-Type': 'application/json'
+          },
+          ...inputData
         });
 
-        //console.log("Response: ", response.data)
-        console.log(response.data.results.documents)
-        if(response.status === 200){
-          setDocuments(response.data.results.documents); // all the received documents
-          setWordCloud(true);
+      //console.log("Response: ", response.data)
+      console.log(response.data.results)
+      if (response.status === 200) {
+        setDocuments(response.data.results.documents); // all the received documents
+        setWordCloud(response.data.results.wordcloud);
+        setSpellcheck(response.data.results.spellcheck);
 
-          // set the total number of pages
-          setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
-          // set the documents for the current page
-          setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
+        // set the total number of pages
+        setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
+        // set the documents for the current page
+        setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
 
-          setQueryTime(response.data.results.query_time);
-        }
-        else {
-          console.error("Error from backend: ", response.data.error);
-        }
+        setQueryTime(response.data.results.query_time);
+      }
+      else {
+        console.error("Error from backend: ", response.data.error);
+      }
     }
-    else { 
+    else {
       console.log("Query is empty.")
     }
 
@@ -183,6 +183,13 @@ export default function HomePage() {
     setDocumentsForCurrentPage(documents.slice((value - 1) * postsPerPage, value * postsPerPage));
   }
 
+  const handleSpellcheck = async (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setSearch(() => spellcheck);
+    handleSubmit(event , spellcheck);
+  }
+
   return (
     <div id="Page" className="Page" style={{ backgroundColor: 'white', height: '100vh', font: '-moz-initial' }}>
       <Navbar className="navbar-dark bg-dark">
@@ -196,14 +203,14 @@ export default function HomePage() {
               <div className="col">
                 <div className="row align-items-center">
                   <div className="col">
-                    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
-                      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setSearch(e.target.value)} />
+                    <form className="form-inline my-2 my-lg-0" onSubmit={(e)=>handleSubmit(e, search)}>
+                      <input className="form-control mr-sm-2" type="search" placeholder="Search" value={search} aria-label="Search" onChange={e => setSearch(e.target.value)} />
                     </form>
                   </div>
                   <div className="col-auto">
                     <button className="btn btn-outline-success my-2 my-sm-0"
                       style={{ marginLeft: "10px" }}
-                      onClick={handleSubmit} >
+                      onClick={(e)=>handleSubmit(e, search)} >
                       Search
                     </button>
                   </div>
@@ -228,9 +235,9 @@ export default function HomePage() {
 
       {
         loading ?
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection:"column"}}>
-            <Spinner style={{width:100, height:100}} animation="border" variant="secondary" size="xl"/>
-            <h3 style={{ marginLeft: '10px' , marginTop:'20px'}}>Loading...</h3>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: "column" }}>
+            <Spinner style={{ width: 100, height: 100 }} animation="border" variant="secondary" size="xl" />
+            <h3 style={{ marginLeft: '10px', marginTop: '20px' }}>Loading...</h3>
           </div>
           :
           <div className="row align-items-start" style={{ width: "100%", marginTop: '30px', zIndex: '1' }}>
@@ -268,7 +275,7 @@ export default function HomePage() {
                     spellcheck !== "" && spellcheck !== "no spellcheck found" &&
                     <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
                       <h5 style={{ paddingTop: 2 }}>Did you mean:</h5>
-                      <Button style={{ color: 'blue', background: 'none', border: 'none', fontSize: 20 }} onClick={(event) => { setSearch(spellcheck); handleSubmit(event) }}>
+                      <Button onClick={(event)=>{console.log("clicked") ; handleSpellcheck(event)}} style={{ color: 'blue', background: 'none', border: 'none', fontSize: 20 }}>
                         {spellcheck}
                       </Button>
                     </div>
