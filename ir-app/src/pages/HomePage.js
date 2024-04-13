@@ -80,44 +80,50 @@ export default function HomePage() {
     const start = convertToYYYYMMDD(startDate);
     const end = convertToYYYYMMDD(endDate);
 
-
+    if (search != "") { 
     //fetch the data from the servers
-    const inputData = {
-      "query" : search, 
-      "start" : start,
-      "end" : end,
-      "sort_type" : {
-        "time" : time,
-        "sentiment" : sentiment,
-        "score" : score
-      }
-    };
+        const inputData = {
+          "query" : search, 
+          "start" : start,
+          "end" : end,
+          "sort_type" : {
+            "time" : time,
+            "sentiment" : sentiment,
+            "score" : score
+          }
+        };
 
-    console.log(inputData)
-    const response = await axios.post("http://127.0.0.1:5000/get_query", 
-    {
-        Headers: {
-            'Content-Type': 'application/json'
-        },
-        ...inputData
-    });
+        console.log(inputData)
+        const response = await axios.post("http://127.0.0.1:5000/get_query", 
+        {
+            Headers: {
+                'Content-Type': 'application/json'
+            },
+            ...inputData
+        });
 
-    //console.log("Response: ", response.data)
-    console.log(response.data.results.documents)
-    if(response.status === 200){
-      setDocuments(response.data.results.documents); // all the received documents
-      setWordCloud(true);
+        //console.log("Response: ", response.data)
+        console.log(response.data.results.documents)
+        if(response.status === 200){
+          setDocuments(response.data.results.documents); // all the received documents
+          setWordCloud(true);
 
-      // set the total number of pages
-      setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
-      // set the documents for the current page
-      setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
+          // set the total number of pages
+          setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
+          // set the documents for the current page
+          setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
 
-      setQueryTime(response.data.results.query_time);
+          setQueryTime(response.data.results.query_time);
+        }
+        else{
+          console.error("Error from backend: ", response.data.error);
+        }
     }
-    else{
-      console.error("Error from backend: ", response.data.error);
+    else { 
+      console.log("Query is empty.")
     }
+
+    
   }
   
   const handleSearch = async (type) => {
