@@ -54,7 +54,7 @@ const Posts = ({ documents , handleVote}) => {
           <Card style={{ margin: "5px" }}>
             <Card.Header className="d-flex justify-content-between align-items-center">
               <div>
-                <IoMdPerson />  {document.id} · {getSubRedditPill("r/" + document.subreddit)}
+                {getSubRedditPill("r/" + document.subreddit)}
               </div>
               <div>
                 {/* {getSentimentPill(document.sentiment)} */}
