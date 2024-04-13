@@ -129,7 +129,7 @@ export default function HomePage() {
       console.log("Query is empty.")
     }
 
-    
+    setLoading(false);
   }
 
   const handleVote = async (doc_id, vote_type) => {
