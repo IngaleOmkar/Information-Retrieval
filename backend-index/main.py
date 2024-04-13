@@ -365,11 +365,12 @@ def combinedQuery(query, start="", end="", sort_type=""):
     response["query_time"] = results.qtime
     response["documents"] = results.docs
     response["spellcheck"] = results.spellcheck['collations'][1] if 'collations' in results.spellcheck and len(results.spellcheck['collations']) > 1 else "no spellcheck found"
+    response["wordcloud"] = results.hits >0
     
-    
-    print("GENERATING WORDCLOUD")
-    generateWordCloudWithResults(results)
-    print("GENERATED WORDCLOUD")
+    if (results.hits > 0):
+        print("GENERATING WORDCLOUD")
+        generateWordCloudWithResults(results.docs)
+        print("GENERATED WORDCLOUD")
     
     
     return response
