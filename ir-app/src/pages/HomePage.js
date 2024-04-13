@@ -117,7 +117,9 @@ export default function HomePage() {
         // set the total number of pages
         setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
         // set the documents for the current page
-        setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
+        // setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
+
+        setDocumentsForCurrentPage(()=>[...response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage)])
 
         setQueryTime(response.data.results.query_time);
       }
@@ -168,7 +170,9 @@ export default function HomePage() {
       // set the total number of pages
       setTotalPages(Math.ceil(results.documents.length / postsPerPage));
       // set the documents for the current page
-      setDocumentsForCurrentPage(results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
+
+
+      setDocumentsForCurrentPage(results.documents.slice(((page - 1) * postsPerPage), (page * postsPerPage)));
 
       setQueryTime(results.documents.query_time);
     }
@@ -204,7 +208,7 @@ export default function HomePage() {
                 <div className="row align-items-center">
                   <div className="col">
                     <form className="form-inline my-2 my-lg-0" onSubmit={(e)=>handleSubmit(e, search)}>
-                      <input className="form-control mr-sm-2" type="search" placeholder="Search" value={search} aria-label="Search" onChange={e => setSearch(e.target.value)} />
+                    <input className="form-control mr-sm-2" type="search" placeholder="Search" value={search} aria-label="Search" onChange={e => {setSearch(e.target.value); if(e.target.value==""){setDocuments([]); setDocumentsForCurrentPage([]);setTotalPages(0);setWordCloud(false)};setQueryTime('');}}/>
                     </form>
                   </div>
                   <div className="col-auto">
@@ -275,7 +279,7 @@ export default function HomePage() {
                     spellcheck !== "" && spellcheck !== "no spellcheck found" &&
                     <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
                       <h5 style={{ paddingTop: 2 }}>Did you mean:</h5>
-                      <Button onClick={(event)=>{console.log("clicked") ; handleSpellcheck(event)}} style={{ color: 'blue', background: 'none', border: 'none', fontSize: 20 }}>
+                      <Button onClick={(event)=>{ handleSpellcheck(event)}} style={{ color: 'blue', background: 'none', border: 'none', fontSize: 20 }}>
                         {spellcheck}
                       </Button>
                     </div>
@@ -311,7 +315,8 @@ export default function HomePage() {
                     </div>
                   </div>
                   {/* Replace with variables depending on page numbers */}
-                  {wordCloud && <h6><b><i>Showing results {((page - 1) * postsPerPage) + 1} to {(page * postsPerPage > documents.length) ? documents.length : (page * postsPerPage)} of {documents.length}. Query Executed in {queryTime} ms.</i></b></h6>}
+                  {documents.length>0 && <h6><b><i>Showing results {((page - 1) * postsPerPage) + 1} to {(page * postsPerPage > documents.length) ? documents.length : (page * postsPerPage)} of {documents.length}. Query Executed in {queryTime} ms.</i></b></h6>}
+                  {documents.length === 0 && queryTime!=='' &&<h6><b><i>No results found. Query Executed in {queryTime} ms.</i></b></h6>}
                 </div>
                 <div className='col-auto'>
                   {/* <Button variant="primary" size="sm">
@@ -322,7 +327,7 @@ export default function HomePage() {
               <Posts documents={documentsForCurrentPage} handleVote={handleVote} />
               {/* Create a div that occupies the entire column and centers the lements within it */}
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '30px' }}>
-                {wordCloud && <Pagination count={totalPages} onChange={handlePageChange} />}
+                {wordCloud && totalPages>0 && <Pagination count={totalPages} onChange={handlePageChange} />}
               </div>
             </div>
           </div>
