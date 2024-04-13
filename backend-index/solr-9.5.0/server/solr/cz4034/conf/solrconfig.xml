@@ -655,7 +655,7 @@
       <str name="spellcheck">true</str>
       <str name="spellcheck.count">5</str>
       <str name="spellcheck.collate">true</str>
-      <str name="spellcheck.maxCollationTries">5</str>
+      <str name="spellcheck.maxCollationTries">10</str>
     </lst>    
 
     <arr name="last-components">

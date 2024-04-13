@@ -86,7 +86,11 @@ export default function HomePage() {
       "query" : search, 
       "start" : start,
       "end" : end,
-      "sort_type" : score
+      "sort_type" : {
+        "time" : time,
+        "sentiment" : sentiment,
+        "score" : score
+      }
     };
 
     console.log(inputData)
@@ -230,15 +234,15 @@ export default function HomePage() {
                 </div>
                 <div className="col-auto">
                   <DropdownButton id="time" variant="outline-dark" menuVariant="light" title={timeFilter}>
-                    <Dropdown.Item onClick={() => { setTimeFilter("Date Posted") }} >Date Posted</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setTimeFilter("Date Posted"); setTime("") }} >Date Posted</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('date desc') }}>Most recent</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('date asc') }}>Least recent</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setTimeFilter("Most recent"); setTime('created desc') }}>Most recent</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setTimeFilter("Least recent"); setTime('created asc') }}>Least recent</Dropdown.Item>
                   </DropdownButton>
                 </div>
                 <div className="col-auto">
                 <DropdownButton id="Sentiment" variant="outline-dark" menuVariant="light" title={sentimentFilter}>
-                    <Dropdown.Item onClick={() => { setSentimentFilter("Sentiment") }}>Sentiment</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setSentimentFilter("Sentiment"); setSentiment("") }}>Sentiment</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={() => { setSentimentFilter("Positive"); setSentiment('Positive') }}>Positive</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setSentimentFilter("Negative"); setSentiment('Negative') }}>Negative</Dropdown.Item>

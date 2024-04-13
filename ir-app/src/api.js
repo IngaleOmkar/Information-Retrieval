@@ -11,7 +11,7 @@ import axios from 'axios';
  * }
  * 
  * sort can be one of the following:
- * 1. reddit_score asc
+ * 1. reddit_score asc for 
  * 2. reddit_score desc
  * 
  * VOTE API INPUT
@@ -26,8 +26,10 @@ import axios from 'axios';
  * }
  * 
  * sort can be one of the following:
- * 1. reddit_score asc
- * 2. reddit_score desc
+ * 1. reddit_score asc => from the lowest score to the highest score
+ * 2. reddit_score desc => from the highest score to the lowest score
+ * 3. created asc => from the oldest post to the newest post
+ * 4. created desc => from the newest post to the oldest post
  * 
  * 
  * outputData: {
@@ -68,7 +70,6 @@ export const performQuery = async (inputData , type) => {
             ...inputData
         })
 
-        console.log("Response: ", response.data)
         
         if(response.status === 200){
             return response.data.results

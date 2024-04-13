@@ -288,6 +288,19 @@ def sortAscending(searchString , sort_type="reddit_score asc"):
 def combinedQuery(query, start="", end="", sort_type=""):
     start_time = time.time()
 
+    queryParams = {
+            'rows' : 10000,
+            'fl': 'id, title, subreddit, created , body, score , reddit_score',
+            'df': 'spellcheck',
+            'defType': 'dismax', # use dismax query parser
+            'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
+    }
+
+    # handle sentiment processing
+    # if (sort_type["sentiment"]!=""):
+    #     queryParams['fq'] = 'subreddit:' + sort_type["sentiment"]
+
+    # handle date ordering
     if (start == ""):
         start = "*"
     else:
@@ -297,25 +310,30 @@ def combinedQuery(query, start="", end="", sort_type=""):
     else:
         end += "T23:59:59Z"
 
-    if (sort_type == ""):
-        results = solr.search(f'{query}', **{
-            'rows' : 10000,
-            'fl': 'id, title, subreddit, created , body, score',
-            'fq': 'created:[' + start + ' TO ' + end + ']',
-            'df': 'spellcheck',
-            'defType': 'dismax', # use dismax query parser
-            'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
-        })
+    if ('fq' in queryParams and queryParams['fq'] != ""):
+        queryParams['fq'] += ' AND created:[' + start + ' TO ' + end + ']'
     else:
-        results = solr.search(f'{query}', **{
-            'rows' : 10000,
-            'fl': 'id, title, subreddit,created, body, score',
-            'fq': 'created:[' + start + ' TO ' + end + ']',
-            'df': 'spellcheck',
-            'sort': sort_type,
-            'defType': 'dismax', # use dismax query parser
-            'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
-        })
+        queryParams['fq'] = 'created:[' + start + ' TO ' + end + ']'
+        
+
+    print("obtained the fq, doinign sort now")
+
+    # handle sorting
+    sort = ""
+    if (sort_type["time"] != ""):
+        sort = sort_type["time"]
+    if (sort_type["score"] != "" and sort !=""):
+        sort += " , "
+        sort += sort_type["score"]
+    elif (sort_type["score"] != ""):
+        sort = sort_type["score"]
+
+    if (sort != ""):
+        queryParams['sort'] = sort
+
+    print("Query Params: " , queryParams)
+
+    results = solr.search(f'{query}', **queryParams)
      
     # The `Results` object stores total results found, by default the top 
     # ten most relevant results and any additional data like 
