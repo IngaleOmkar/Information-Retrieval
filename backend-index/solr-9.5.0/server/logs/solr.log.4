@@ -1,49 +1,52 @@
-2024-04-09 14:38:33.003 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 22+36-2370
-2024-04-09 14:38:33.202 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
-2024-04-09 14:38:33.215 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2024-04-09 14:38:33.219 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
-2024-04-09 14:38:33.219 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
-2024-04-09 14:38:33.219 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0
-2024-04-09 14:38:33.219 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2024-04-09T14:38:33.219218Z
-2024-04-09 14:38:33.220 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/logs/jvm_crash_57787.log
-2024-04-09 14:38:33.224 WARN  (main) [c: s: r: x: t:] o.a.l.s.MMapDirectory You are running with Java 22 or later. To make full use of MMapDirectory, please update Apache Lucene.
-2024-04-09 14:38:33.229 WARN  (main) [c: s: r: x: t:] o.a.l.i.v.VectorizationProvider You are running with Java 22 or later. To make full use of the Vector API, please update Apache Lucene.
-2024-04-09 14:38:33.231 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr (source: system property: solr.solr.home)
-2024-04-09 14:38:33.240 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr/solr.xml
-2024-04-09 14:38:33.260 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/lib]
-2024-04-09 14:38:33.637 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
-2024-04-09 14:38:33.793 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
-2024-04-09 14:38:33.794 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
-2024-04-09 14:38:33.875 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr
-2024-04-09 14:38:33.875 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [cz4034]
-2024-04-09 14:38:33.902 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
-2024-04-09 14:38:33.938 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.s.IndexSchema Schema name=default-config
-2024-04-09 14:38:33.982 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
-2024-04-09 14:38:34.049 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2024-04-09 14:38:34.049 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.c.CoreContainer Creating SolrCore 'cz4034' using configuration from instancedir /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034, trusted=true
-2024-04-09 14:38:34.067 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.c.SolrCore Opening new SolrCore at [/Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034], dataDir=[/Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034/data/]
-2024-04-09 14:38:34.105 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2024-04-09 14:38:34.164 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@6e33c391{solr-jetty-context.xml,/solr,file:///Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{/Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr-webapp/webapp}
-2024-04-09 14:38:34.169 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/logs/2024_04_09.request.log
-2024-04-09 14:38:34.172 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@426b6a74{HTTP/1.1, (http/1.1, h2c)}{127.0.0.1:8983}
-2024-04-09 14:38:34.173 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@4fe89c24{STARTING}[10.0.19,sto=0] @1922ms
-2024-04-09 14:38:34.305 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2024-04-09 14:38:34.315 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
-2024-04-09 14:38:34.315 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
-2024-04-09 14:38:34.323 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
-2024-04-09 14:38:34.324 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
-2024-04-09 14:38:34.383 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /Users/sumi/Documents/GitHub/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034/conf
-2024-04-09 14:38:34.393 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
-2024-04-09 14:38:34.395 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: wordbreak
-2024-04-09 14:38:34.398 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
-2024-04-09 14:38:34.398 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 14:38:34.398 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
-2024-04-09 14:38:34.400 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
-2024-04-09 14:38:34.402 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-04-09 14:39:10.735 INFO  (qtp711112124-32-localhost-2) [c: s: r: x: t:localhost-2] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712673550706} status=0 QTime=4
-2024-04-09 14:39:10.741 INFO  (qtp711112124-33-localhost-3) [c: s: r: x: t:localhost-3] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712673550706} status=0 QTime=11
-2024-04-09 14:39:10.761 INFO  (qtp711112124-39-localhost-4) [c: s: r: x: t:localhost-4] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712673550706} status=0 QTime=1
-2024-04-09 14:41:17.731 WARN  (qtp711112124-36-localhost-5) [c: s: r: x:cz4034 t:localhost-5] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
+2024-04-11 14:14:51.436 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 11.0.17+8-LTS
+2024-04-11 14:14:51.688 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
+2024-04-11 14:14:51.705 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2024-04-11 14:14:51.710 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
+2024-04-11 14:14:51.710 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
+2024-04-11 14:14:51.710 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0
+2024-04-11 14:14:51.710 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2024-04-11T14:14:51.710661Z
+2024-04-11 14:14:51.712 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/logs/jvm_crash_4531.log
+2024-04-11 14:14:51.736 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr (source: system property: solr.solr.home)
+2024-04-11 14:14:51.746 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr/solr.xml
+2024-04-11 14:14:51.771 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/lib]
+2024-04-11 14:14:52.261 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
+2024-04-11 14:14:52.457 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
+2024-04-11 14:14:52.458 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
+2024-04-11 14:14:52.570 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr
+2024-04-11 14:14:52.570 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [cz4034]
+2024-04-11 14:14:52.589 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
+2024-04-11 14:14:52.641 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.s.IndexSchema Schema name=default-config
+2024-04-11 14:14:52.732 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
+2024-04-11 14:14:52.803 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2024-04-11 14:14:52.803 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.c.CoreContainer Creating SolrCore 'cz4034' using configuration from instancedir /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034, trusted=true
+2024-04-11 14:14:52.842 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.c.SolrCore Opening new SolrCore at [/Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034], dataDir=[/Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034/data/]
+2024-04-11 14:14:52.962 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2024-04-11 14:14:53.082 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@4463d9d3{solr-jetty-context.xml,/solr,file:///Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{/Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr-webapp/webapp}
+2024-04-11 14:14:53.111 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/logs/2024_04_11.request.log
+2024-04-11 14:14:53.116 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@a23a01d{HTTP/1.1, (http/1.1, h2c)}{127.0.0.1:8983}
+2024-04-11 14:14:53.117 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@51671b08{STARTING}[10.0.19,sto=0] @2833ms
+2024-04-11 14:14:53.288 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2024-04-11 14:14:53.300 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-04-11 14:14:53.300 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-04-11 14:14:53.311 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
+2024-04-11 14:14:53.312 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
+2024-04-11 14:14:53.414 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /Users/omkaringale/Desktop/IR/Information-Retrieval/backend-index/solr-9.5.0/server/solr/cz4034/conf
+2024-04-11 14:14:53.430 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2024-04-11 14:14:53.432 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: wordbreak
+2024-04-11 14:14:53.437 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:cz4034 t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
+2024-04-11 14:14:53.438 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-04-11 14:14:53.438 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-04-11 14:14:53.440 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: wordbreak
+2024-04-11 14:14:53.444 INFO  (searcherExecutor-13-thread-1-processing-cz4034) [c: s: r: x:cz4034 t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2024-04-11 14:15:14.233 INFO  (qtp1648582256-19-localhost-2) [c: s: r: x: t:localhost-2] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712844914191} status=0 QTime=4
+2024-04-11 14:15:14.240 INFO  (qtp1648582256-17-localhost-3) [c: s: r: x: t:localhost-3] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712844914191} status=0 QTime=13
+2024-04-11 14:15:17.775 INFO  (qtp1648582256-21-localhost-5) [c: s: r: x: t:localhost-5] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712844914191} status=0 QTime=0
+2024-04-11 14:15:17.779 INFO  (qtp1648582256-24-localhost-4) [c: s: r: x: t:localhost-4] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712844914191} status=0 QTime=4
+2024-04-11 14:15:17.784 INFO  (qtp1648582256-23-localhost-8) [c: s: r: x:cz4034 t:localhost-8] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={action=status&wt=json&_=1712844914191&ts=1712844914191} status=503 QTime=3
+2024-04-11 14:15:17.785 INFO  (qtp1648582256-19-localhost-7) [c: s: r: x:cz4034 t:localhost-7] o.a.s.c.S.Request webapp=/solr path=/admin/system params={wt=json&_=1712844917767} status=0 QTime=4
+2024-04-11 14:15:17.786 INFO  (qtp1648582256-18-localhost-6) [c: s: r: x:cz4034 t:localhost-6] o.a.s.c.S.Request webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json&_=1712844917767} status=0 QTime=5
+2024-04-11 14:15:17.787 INFO  (qtp1648582256-17-localhost-9) [c: s: r: x:cz4034 t:localhost-9] o.a.s.c.S.Request webapp=/solr path=/replication params={wt=json&command=details&_=1712844917767} status=0 QTime=6
+2024-04-11 14:32:16.241 WARN  (qtp1648582256-18-localhost-10) [c: s: r: x:cz4034 t:localhost-10] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392)
 org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
@@ -102,10 +105,10 @@ org.apache.solr.common.SolrException: invalid query parser 'license' for query '
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 14:41:17.732 INFO  (qtp711112124-36-localhost-5) [c: s: r: x:cz4034 t:localhost-5] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=89
-2024-04-09 14:41:17.732 INFO  (qtp711112124-36-localhost-5) [c: s: r: x:cz4034 t:localhost-5] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=89
-2024-04-09 14:41:17.895 WARN  (qtp711112124-31-localhost-6) [c: s: r: x:cz4034 t:localhost-6] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
+	at java.base/java.lang.Thread.run(Thread.java:829) [?:?]
+2024-04-11 14:32:16.241 INFO  (qtp1648582256-18-localhost-10) [c: s: r: x:cz4034 t:localhost-10] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=64
+2024-04-11 14:32:16.242 INFO  (qtp1648582256-18-localhost-10) [c: s: r: x:cz4034 t:localhost-10] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=64
+2024-04-11 14:32:16.408 WARN  (qtp1648582256-16-localhost-11) [c: s: r: x:cz4034 t:localhost-11] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392)
 org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
@@ -168,78 +171,16 @@ org.apache.solr.common.SolrException: invalid query parser 'license' for query '
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 14:41:17.895 INFO  (qtp711112124-31-localhost-6) [c: s: r: x:cz4034 t:localhost-6] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=5
-2024-04-09 14:41:17.895 INFO  (qtp711112124-31-localhost-6) [c: s: r: x:cz4034 t:localhost-6] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=5
-2024-04-09 14:41:19.773 INFO  (qtp711112124-34-localhost-7) [c: s: r: x:cz4034 t:localhost-7] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1795868514733522944), 1azyssf (1795868514758688768), 1azxsze (1795868514759737344), 1azx26v (1795868514760785920), 1azvuxx (1795868514761834496), 1azva4x (1795868514762883072), 1azv8xe (1795868514763931648), 1azv3no (1795868514764980224), 1azun3q (1795868514766028800), 1azu5hw (1795868514766028801), ... (10205 adds)]} 0 1643
-2024-04-09 14:41:20.417 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-8) [c: s: r: x:cz4034 t:localhost-8] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 14:41:20.417 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-8) [c: s: r: x:cz4034 t:localhost-8] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 14:41:20.667 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-8) [c: s: r: x:cz4034 t:localhost-8] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 14:41:20.673 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-8) [c: s: r: x:cz4034 t:localhost-8] o.a.s.c.SolrCore Registered new searcher autowarm time: 2 ms
-2024-04-09 14:41:20.682 INFO  (qtp711112124-40-localhost-8) [c: s: r: x:cz4034 t:localhost-8] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 903
-2024-04-09 14:45:13.113 WARN  (qtp711112124-37-localhost-9) [c: s: r: x:cz4034 t:localhost-9] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
-	at org.apache.solr.search.QParser.getParser(QParser.java:392)
-org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
-	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
-	at org.apache.solr.search.QParser.getParser(QParser.java:334) ~[?:?]
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:172) ~[?:?]
-	at org.apache.solr.spelling.SpellCheckCollator.collate(SpellCheckCollator.java:154) ~[?:?]
-	at org.apache.solr.handler.component.SpellCheckComponent.addCollationsToResponse(SpellCheckComponent.java:305) ~[?:?]
-	at org.apache.solr.handler.component.SpellCheckComponent.process(SpellCheckComponent.java:212) ~[?:?]
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:467) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.handler.PingRequestHandler.handlePing(PingRequestHandler.java:275) ~[?:?]
-	at org.apache.solr.handler.PingRequestHandler.handleRequestBody(PingRequestHandler.java:206) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
-	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 14:45:13.114 INFO  (qtp711112124-37-localhost-9) [c: s: r: x:cz4034 t:localhost-9] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=17
-2024-04-09 14:45:13.114 INFO  (qtp711112124-37-localhost-9) [c: s: r: x:cz4034 t:localhost-9] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=17
-2024-04-09 14:45:13.271 WARN  (qtp711112124-38-localhost-10) [c: s: r: x:cz4034 t:localhost-10] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
+	at java.base/java.lang.Thread.run(Thread.java:829) [?:?]
+2024-04-11 14:32:16.408 INFO  (qtp1648582256-16-localhost-11) [c: s: r: x:cz4034 t:localhost-11] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=6
+2024-04-11 14:32:16.408 INFO  (qtp1648582256-16-localhost-11) [c: s: r: x:cz4034 t:localhost-11] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=6
+2024-04-11 14:32:18.280 INFO  (qtp1648582256-43-localhost-12) [c: s: r: x:cz4034 t:localhost-12] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1796049140780630016), 1azyssf (1796049140813135872), 1azxsze (1796049140814184448), 1azx26v (1796049140815233024), 1azvuxx (1796049140816281600), 1azva4x (1796049140817330176), 1azv8xe (1796049140818378752), 1azv3no (1796049140819427328), 1azun3q (1796049140820475904), 1azu5hw (1796049140820475905), ... (10205 adds)]} 0 1729
+2024-04-11 14:32:18.968 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-13) [c: s: r: x:cz4034 t:localhost-13] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-04-11 14:32:18.968 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-13) [c: s: r: x:cz4034 t:localhost-13] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
+2024-04-11 14:32:19.226 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-13) [c: s: r: x:cz4034 t:localhost-13] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
+2024-04-11 14:32:19.231 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-13) [c: s: r: x:cz4034 t:localhost-13] o.a.s.c.SolrCore Registered new searcher autowarm time: 3 ms
+2024-04-11 14:32:19.240 INFO  (qtp1648582256-19-localhost-13) [c: s: r: x:cz4034 t:localhost-13] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 956
+2024-04-11 14:32:49.545 WARN  (qtp1648582256-25-localhost-14) [c: s: r: x:cz4034 t:localhost-14] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392)
 org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
@@ -303,79 +244,10 @@ org.apache.solr.common.SolrException: invalid query parser 'license' for query '
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 14:45:13.271 INFO  (qtp711112124-38-localhost-10) [c: s: r: x:cz4034 t:localhost-10] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=6
-2024-04-09 14:45:13.271 INFO  (qtp711112124-38-localhost-10) [c: s: r: x:cz4034 t:localhost-10] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=6
-2024-04-09 14:45:14.779 INFO  (qtp711112124-39-localhost-11) [c: s: r: x:cz4034 t:localhost-11] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1795868761531613184), 1azyssf (1795868761535807488), 1azxsze (1795868761535807489), 1azx26v (1795868761535807490), 1azvuxx (1795868761535807491), 1azva4x (1795868761535807492), 1azv8xe (1795868761535807493), 1azv3no (1795868761536856064), 1azun3q (1795868761536856065), 1azu5hw (1795868761536856066), ... (10205 adds)]} 0 1271
-2024-04-09 14:45:15.125 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-12) [c: s: r: x:cz4034 t:localhost-12] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 14:45:15.125 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-12) [c: s: r: x:cz4034 t:localhost-12] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 14:45:15.205 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-12) [c: s: r: x:cz4034 t:localhost-12] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 14:45:15.209 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-12) [c: s: r: x:cz4034 t:localhost-12] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-04-09 14:45:15.213 INFO  (qtp711112124-38-localhost-12) [c: s: r: x:cz4034 t:localhost-12] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 430
-2024-04-09 14:45:32.583 INFO  (qtp711112124-36-localhost-13) [c: s: r: x:cz4034 t:localhost-13] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=*,score&row=10} hits=229 status=0 QTime=41
-2024-04-09 15:05:53.618 WARN  (qtp711112124-33-localhost-14) [c: s: r: x:cz4034 t:localhost-14] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
-	at org.apache.solr.search.QParser.getParser(QParser.java:392)
-org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
-	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
-	at org.apache.solr.search.QParser.getParser(QParser.java:334) ~[?:?]
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:172) ~[?:?]
-	at org.apache.solr.spelling.SpellCheckCollator.collate(SpellCheckCollator.java:154) ~[?:?]
-	at org.apache.solr.handler.component.SpellCheckComponent.addCollationsToResponse(SpellCheckComponent.java:305) ~[?:?]
-	at org.apache.solr.handler.component.SpellCheckComponent.process(SpellCheckComponent.java:212) ~[?:?]
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:467) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.handler.PingRequestHandler.handlePing(PingRequestHandler.java:275) ~[?:?]
-	at org.apache.solr.handler.PingRequestHandler.handleRequestBody(PingRequestHandler.java:206) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
-	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 15:05:53.620 INFO  (qtp711112124-33-localhost-14) [c: s: r: x:cz4034 t:localhost-14] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=56
-2024-04-09 15:05:53.620 INFO  (qtp711112124-33-localhost-14) [c: s: r: x:cz4034 t:localhost-14] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=56
-2024-04-09 15:05:53.825 WARN  (qtp711112124-39-localhost-15) [c: s: r: x:cz4034 t:localhost-15] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
+	at java.base/java.lang.Thread.run(Thread.java:829) [?:?]
+2024-04-11 14:32:49.545 INFO  (qtp1648582256-25-localhost-14) [c: s: r: x:cz4034 t:localhost-14] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=12
+2024-04-11 14:32:49.545 INFO  (qtp1648582256-25-localhost-14) [c: s: r: x:cz4034 t:localhost-14] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=12
+2024-04-11 14:32:49.723 WARN  (qtp1648582256-24-localhost-15) [c: s: r: x:cz4034 t:localhost-15] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392)
 org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
@@ -439,83 +311,23 @@ org.apache.solr.common.SolrException: invalid query parser 'license' for query '
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 15:05:53.825 INFO  (qtp711112124-39-localhost-15) [c: s: r: x:cz4034 t:localhost-15] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=3
-2024-04-09 15:05:53.825 INFO  (qtp711112124-39-localhost-15) [c: s: r: x:cz4034 t:localhost-15] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=3
-2024-04-09 15:05:55.622 INFO  (qtp711112124-40-localhost-16) [c: s: r: x:cz4034 t:localhost-16] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1795870062387658752), 1azyssf (1795870062402338816), 1azxsze (1795870062402338817), 1azx26v (1795870062403387392), 1azvuxx (1795870062403387393), 1azva4x (1795870062404435968), 1azv8xe (1795870062404435969), 1azv3no (1795870062405484544), 1azun3q (1795870062405484545), 1azu5hw (1795870062406533120), ... (10205 adds)]} 0 1526
-2024-04-09 15:05:56.077 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 15:05:56.077 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 15:05:56.152 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 15:05:56.157 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-04-09 15:05:56.164 INFO  (qtp711112124-39-localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 538
-2024-04-09 15:20:47.571 INFO  (qtp711112124-37-localhost-18) [c: s: r: x:cz4034 t:localhost-18] o.a.s.c.S.Request webapp=/solr path=/select params={q=id:+1akg3bc&wt=json} hits=1 status=0 QTime=13
-2024-04-09 15:20:47.658 INFO  (qtp711112124-32-localhost-19) [c: s: r: x:cz4034 t:localhost-19] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1akg3bc (1795870999345889280)]} 0 53
-2024-04-09 15:20:47.717 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-20) [c: s: r: x:cz4034 t:localhost-20] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 15:20:47.717 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-20) [c: s: r: x:cz4034 t:localhost-20] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 15:20:47.845 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-20) [c: s: r: x:cz4034 t:localhost-20] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 15:20:47.849 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-20) [c: s: r: x:cz4034 t:localhost-20] o.a.s.c.SolrCore Registered new searcher autowarm time: 2 ms
-2024-04-09 15:20:47.850 INFO  (qtp711112124-31-localhost-20) [c: s: r: x:cz4034 t:localhost-20] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 189
-2024-04-09 15:20:47.855 ERROR (qtp711112124-32-localhost-21) [c: s: r: x:cz4034 t:localhost-21] o.a.s.h.RequestHandlerBase Client exception => org.apache.solr.common.SolrException: Can't determine a Sort Order (asc or desc) in sort spec 'reddit_score_asc', pos=16
-	at org.apache.solr.search.SortSpecParsing.parseSortSpecImpl(SortSpecParsing.java:176)
-org.apache.solr.common.SolrException: Can't determine a Sort Order (asc or desc) in sort spec 'reddit_score_asc', pos=16
-	at org.apache.solr.search.SortSpecParsing.parseSortSpecImpl(SortSpecParsing.java:176) ~[?:?]
-	at org.apache.solr.search.SortSpecParsing.parseSortSpec(SortSpecParsing.java:61) ~[?:?]
-	at org.apache.solr.search.QParser.getSortSpec(QParser.java:294) ~[?:?]
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:201) ~[?:?]
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:431) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
-	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 15:20:47.855 INFO  (qtp711112124-32-localhost-21) [c: s: r: x:cz4034 t:localhost-21] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[2024-02-01T00:00:00Z+TO+2024-02-14T23:59:59Z]&sort=reddit_score_asc&rows=5&wt=json} status=400 QTime=2
-2024-04-09 15:24:20.574 WARN  (qtp711112124-38-localhost-22) [c: s: r: x:cz4034 t:localhost-22] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
+	at java.base/java.lang.Thread.run(Thread.java:829) [?:?]
+2024-04-11 14:32:49.723 INFO  (qtp1648582256-24-localhost-15) [c: s: r: x:cz4034 t:localhost-15] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=2
+2024-04-11 14:32:49.723 INFO  (qtp1648582256-24-localhost-15) [c: s: r: x:cz4034 t:localhost-15] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=2
+2024-04-11 14:32:51.773 INFO  (qtp1648582256-43-localhost-16) [c: s: r: x:cz4034 t:localhost-16] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1796049175708696576), 1azyssf (1796049175711842304), 1azxsze (1796049175711842305), 1azx26v (1796049175711842306), 1azvuxx (1796049175711842307), 1azva4x (1796049175712890880), 1azv8xe (1796049175712890881), 1azv3no (1796049175712890882), 1azun3q (1796049175712890883), 1azu5hw (1796049175712890884), ... (10205 adds)]} 0 1898
+2024-04-11 14:32:52.442 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-04-11 14:32:52.442 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
+2024-04-11 14:32:52.576 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
+2024-04-11 14:32:52.580 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2024-04-11 14:32:52.584 INFO  (qtp1648582256-24-localhost-17) [c: s: r: x:cz4034 t:localhost-17] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 804
+2024-04-11 14:33:13.738 INFO  (qtp1648582256-43-localhost-18) [c: s: r: x:cz4034 t:localhost-18] o.a.s.c.S.Request webapp=/solr path=/select params={q=apple&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=248 status=0 QTime=61
+2024-04-11 14:33:22.639 INFO  (qtp1648582256-24-localhost-19) [c: s: r: x:cz4034 t:localhost-19] o.a.s.c.S.Request webapp=/solr path=/select params={q=microsoft&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=182 status=0 QTime=11
+2024-04-11 17:18:34.507 INFO  (qtp1648582256-23-localhost-20) [c: s: r: x:cz4034 t:localhost-20] o.a.s.c.S.Request webapp=/solr path=/select params={q=meta&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=228 status=0 QTime=17
+2024-04-11 17:31:49.963 INFO  (qtp1648582256-48-localhost-21) [c: s: r: x:cz4034 t:localhost-21] o.a.s.c.S.Request webapp=/solr path=/select params={q=apple&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=248 status=0 QTime=13
+2024-04-11 17:40:42.793 INFO  (qtp1648582256-16-localhost-22) [c: s: r: x:cz4034 t:localhost-22] o.a.s.c.S.Request webapp=/solr path=/select params={q=apple&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=248 status=0 QTime=12
+2024-04-11 17:40:52.779 INFO  (qtp1648582256-43-localhost-23) [c: s: r: x:cz4034 t:localhost-23] o.a.s.c.S.Request webapp=/solr path=/select params={q=google&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=248 status=0 QTime=13
+2024-04-11 17:45:35.855 INFO  (qtp1648582256-16-localhost-24) [c: s: r: x:cz4034 t:localhost-24] o.a.s.c.S.Request webapp=/solr path=/select params={q=apple&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=248 status=0 QTime=15
+2024-04-11 17:46:00.473 WARN  (qtp1648582256-45-localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392)
 org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
@@ -579,10 +391,10 @@ org.apache.solr.common.SolrException: invalid query parser 'license' for query '
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 15:24:20.575 INFO  (qtp711112124-38-localhost-22) [c: s: r: x:cz4034 t:localhost-22] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=29
-2024-04-09 15:24:20.575 INFO  (qtp711112124-38-localhost-22) [c: s: r: x:cz4034 t:localhost-22] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=29
-2024-04-09 15:24:20.732 WARN  (qtp711112124-40-localhost-23) [c: s: r: x:cz4034 t:localhost-23] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
+	at java.base/java.lang.Thread.run(Thread.java:829) [?:?]
+2024-04-11 17:46:00.474 INFO  (qtp1648582256-45-localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=5
+2024-04-11 17:46:00.474 INFO  (qtp1648582256-45-localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=5
+2024-04-11 17:46:00.634 WARN  (qtp1648582256-19-localhost-26) [c: s: r: x:cz4034 t:localhost-26] o.a.s.s.SpellCheckCollator Exception trying to re-query to check if a spell check possibility would return any hits. => org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392)
 org.apache.solr.common.SolrException: invalid query parser 'license' for query '{!license}*:*'
 	at org.apache.solr.search.QParser.getParser(QParser.java:392) ~[?:?]
@@ -646,223 +458,33 @@ org.apache.solr.common.SolrException: invalid query parser 'license' for query '
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 15:24:20.732 INFO  (qtp711112124-40-localhost-23) [c: s: r: x:cz4034 t:localhost-23] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=2
-2024-04-09 15:24:20.732 INFO  (qtp711112124-40-localhost-23) [c: s: r: x:cz4034 t:localhost-23] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=2
-2024-04-09 15:24:22.163 INFO  (qtp711112124-33-localhost-24) [c: s: r: x:cz4034 t:localhost-24] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1795871223036510208), 1azyssf (1795871223039655936), 1azxsze (1795871223039655937), 1azx26v (1795871223039655938), 1azvuxx (1795871223039655939), 1azva4x (1795871223039655940), 1azv8xe (1795871223039655941), 1azv3no (1795871223039655942), 1azun3q (1795871223040704512), 1azu5hw (1795871223040704513), ... (10205 adds)]} 0 1181
-2024-04-09 15:24:22.524 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 15:24:22.524 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 15:24:22.600 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 15:24:22.603 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-04-09 15:24:22.610 INFO  (qtp711112124-40-localhost-25) [c: s: r: x:cz4034 t:localhost-25] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 442
-2024-04-09 15:24:58.400 INFO  (qtp711112124-33-localhost-26) [c: s: r: x:cz4034 t:localhost-26] o.a.s.c.S.Request webapp=/solr path=/select params={q=id:+1akg3bc&wt=json} hits=1 status=0 QTime=9
-2024-04-09 15:24:58.414 INFO  (qtp711112124-40-localhost-27) [c: s: r: x:cz4034 t:localhost-27] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1akg3bc (1795871262282612736)]} 0 4
-2024-04-09 15:24:58.448 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 15:24:58.448 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 15:24:58.554 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 15:24:58.558 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-04-09 15:24:58.559 INFO  (qtp711112124-33-localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 142
-2024-04-09 15:24:58.562 ERROR (qtp711112124-40-localhost-29) [c: s: r: x:cz4034 t:localhost-29] o.a.s.h.RequestHandlerBase Client exception => org.apache.solr.common.SolrException: Can't determine a Sort Order (asc or desc) in sort spec 'reddit_score_asc', pos=16
-	at org.apache.solr.search.SortSpecParsing.parseSortSpecImpl(SortSpecParsing.java:176)
-org.apache.solr.common.SolrException: Can't determine a Sort Order (asc or desc) in sort spec 'reddit_score_asc', pos=16
-	at org.apache.solr.search.SortSpecParsing.parseSortSpecImpl(SortSpecParsing.java:176) ~[?:?]
-	at org.apache.solr.search.SortSpecParsing.parseSortSpec(SortSpecParsing.java:61) ~[?:?]
-	at org.apache.solr.search.QParser.getSortSpec(QParser.java:294) ~[?:?]
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:201) ~[?:?]
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:431) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
-	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-2024-04-09 15:24:58.562 INFO  (qtp711112124-40-localhost-29) [c: s: r: x:cz4034 t:localhost-29] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[2024-02-01T00:00:00Z+TO+2024-02-14T23:59:59Z]&sort=reddit_score_asc&rows=5&wt=json} status=400 QTime=0
-2024-04-09 15:27:14.483 INFO  (qtp711112124-36-localhost-30) [c: s: r: x:cz4034 t:localhost-30] o.a.s.c.S.Request webapp=/solr path=/select params={q=recetion&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[2024-02-01T00:00:00Z+TO+2024-02-14T23:59:59Z]&sort=reddit_score+asc&rows=5&wt=json} hits=0 status=0 QTime=75
-2024-04-09 15:27:46.317 INFO  (qtp711112124-37-localhost-31) [c: s: r: x:cz4034 t:localhost-31] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[2024-02-01T00:00:00Z+TO+2024-02-14T23:59:59Z]&sort=reddit_score+asc&rows=5&wt=json} hits=11 status=0 QTime=43
-2024-04-09 15:28:14.482 INFO  (qtp711112124-36-localhost-32) [c: s: r: x:cz4034 t:localhost-32] o.a.s.c.S.Request webapp=/solr path=/select params={q=id:+1akg3bc&wt=json} hits=1 status=0 QTime=8
-2024-04-09 15:28:14.509 INFO  (qtp711112124-37-localhost-33) [c: s: r: x:cz4034 t:localhost-33] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1akg3bc (1795871467893686272)]} 0 17
-2024-04-09 15:28:14.535 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-34) [c: s: r: x:cz4034 t:localhost-34] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-04-09 15:28:14.535 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-34) [c: s: r: x:cz4034 t:localhost-34] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
-2024-04-09 15:28:14.662 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-34) [c: s: r: x:cz4034 t:localhost-34] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
-2024-04-09 15:28:14.666 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-34) [c: s: r: x:cz4034 t:localhost-34] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2024-04-09 15:28:14.669 INFO  (qtp711112124-36-localhost-34) [c: s: r: x:cz4034 t:localhost-34] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 158
-2024-04-09 15:28:14.675 INFO  (qtp711112124-37-localhost-35) [c: s: r: x:cz4034 t:localhost-35] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[2024-02-01T00:00:00Z+TO+2024-02-14T23:59:59Z]&sort=reddit_score+asc&rows=5&wt=json} hits=11 status=0 QTime=3
-2024-04-09 15:32:30.972 INFO  (qtp711112124-39-localhost-36) [c: s: r: x:cz4034 t:localhost-36] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=26
-2024-04-09 15:35:06.638 INFO  (qtp711112124-33-localhost-37) [c: s: r: x:cz4034 t:localhost-37] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=19
-2024-04-09 15:36:37.427 INFO  (qtp711112124-37-localhost-38) [c: s: r: x:cz4034 t:localhost-38] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=10
-2024-04-09 15:37:21.388 INFO  (qtp711112124-33-localhost-39) [c: s: r: x:cz4034 t:localhost-39] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=7
-2024-04-09 15:38:43.386 INFO  (qtp711112124-37-localhost-40) [c: s: r: x:cz4034 t:localhost-40] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=10
-2024-04-09 15:38:57.896 INFO  (qtp711112124-33-localhost-41) [c: s: r: x:cz4034 t:localhost-41] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=6
-2024-04-09 15:39:16.228 INFO  (qtp711112124-37-localhost-42) [c: s: r: x:cz4034 t:localhost-42] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=15
-2024-04-10 15:01:57.102 INFO  (qtp711112124-40-localhost-43) [c: s: r: x:cz4034 t:localhost-43] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=57
-2024-04-10 15:01:57.144 INFO  (qtp711112124-38-localhost-44) [c: s: r: x:cz4034 t:localhost-44] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=3
-2024-04-10 15:02:01.532 INFO  (qtp711112124-32-localhost-45) [c: s: r: x:cz4034 t:localhost-45] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=15
-2024-04-10 15:02:04.852 INFO  (qtp711112124-38-localhost-46) [c: s: r: x:cz4034 t:localhost-46] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=3
-2024-04-10 15:08:53.844 INFO  (qtp711112124-34-localhost-47) [c: s: r: x:cz4034 t:localhost-47] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=46
-2024-04-10 15:09:03.347 INFO  (qtp711112124-36-localhost-48) [c: s: r: x:cz4034 t:localhost-48] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=4
-2024-04-10 15:10:53.623 INFO  (qtp711112124-40-localhost-49) [c: s: r: x:cz4034 t:localhost-49] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=7
-2024-04-10 15:11:36.658 INFO  (qtp711112124-36-localhost-50) [c: s: r: x:cz4034 t:localhost-50] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=10
-2024-04-10 15:11:39.152 INFO  (qtp711112124-40-localhost-51) [c: s: r: x:cz4034 t:localhost-51] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=4
-2024-04-10 15:12:26.742 INFO  (qtp711112124-36-localhost-52) [c: s: r: x:cz4034 t:localhost-52] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=5
-2024-04-10 15:12:31.132 INFO  (qtp711112124-40-localhost-53) [c: s: r: x:cz4034 t:localhost-53] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=3
-2024-04-10 15:13:15.228 INFO  (qtp711112124-36-localhost-54) [c: s: r: x:cz4034 t:localhost-54] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=6
-2024-04-10 15:13:17.590 INFO  (qtp711112124-40-localhost-55) [c: s: r: x:cz4034 t:localhost-55] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=4
-2024-04-10 15:16:34.962 INFO  (qtp711112124-31-localhost-56) [c: s: r: x:cz4034 t:localhost-56] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=15
-2024-04-10 15:17:03.102 INFO  (qtp711112124-39-localhost-57) [c: s: r: x:cz4034 t:localhost-57] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=7
-2024-04-10 15:17:51.097 INFO  (qtp711112124-31-localhost-58) [c: s: r: x:cz4034 t:localhost-58] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=8
-2024-04-10 15:19:01.942 INFO  (qtp711112124-39-localhost-59) [c: s: r: x:cz4034 t:localhost-59] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=8
-2024-04-10 15:19:35.352 INFO  (qtp711112124-31-localhost-60) [c: s: r: x:cz4034 t:localhost-60] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=10
-2024-04-10 15:29:43.780 INFO  (qtp711112124-34-localhost-61) [c: s: r: x:cz4034 t:localhost-61] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=53
-2024-04-10 15:30:14.194 INFO  (qtp711112124-33-localhost-62) [c: s: r: x:cz4034 t:localhost-62] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=6
-2024-04-10 15:30:16.333 INFO  (qtp711112124-37-localhost-63) [c: s: r: x:cz4034 t:localhost-63] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=4
-2024-04-10 15:32:54.999 INFO  (qtp711112124-32-localhost-64) [c: s: r: x:cz4034 t:localhost-64] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=7
-2024-04-10 15:33:07.209 INFO  (qtp711112124-40-localhost-65) [c: s: r: x:cz4034 t:localhost-65] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=6
-2024-04-10 15:35:02.443 INFO  (qtp711112124-32-localhost-66) [c: s: r: x:cz4034 t:localhost-66] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=11
-2024-04-10 15:39:03.506 INFO  (qtp711112124-34-localhost-67) [c: s: r: x:cz4034 t:localhost-67] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=6
-2024-04-10 15:39:26.217 INFO  (qtp711112124-36-localhost-68) [c: s: r: x:cz4034 t:localhost-68] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=25
-2024-04-10 15:52:12.905 INFO  (qtp711112124-32-localhost-69) [c: s: r: x:cz4034 t:localhost-69] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=28
-2024-04-10 15:59:13.784 INFO  (qtp711112124-38-localhost-70) [c: s: r: x:cz4034 t:localhost-70] o.a.s.c.S.Request webapp=/solr path=/select params={q=nvidia&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=254 status=0 QTime=9
-2024-04-10 16:08:08.253 INFO  (qtp711112124-31-localhost-71) [c: s: r: x:cz4034 t:localhost-71] o.a.s.c.S.Request webapp=/solr path=/select params={q=yea&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=8 status=0 QTime=33
-2024-04-10 16:08:25.632 INFO  (qtp711112124-40-localhost-72) [c: s: r: x:cz4034 t:localhost-72] o.a.s.c.S.Request webapp=/solr path=/select params={q=yeah&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=27 status=0 QTime=10
-2024-04-10 16:08:47.490 INFO  (qtp711112124-34-localhost-73) [c: s: r: x:cz4034 t:localhost-73] o.a.s.c.S.Request webapp=/solr path=/select params={q=yea&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[2024-02-01T00:00:00Z+TO+2024-02-14T23:59:59Z]&sort=reddit_score+asc&rows=5&wt=json} hits=0 status=0 QTime=18
-2024-04-10 16:08:55.705 INFO  (qtp711112124-40-localhost-74) [c: s: r: x:cz4034 t:localhost-74] o.a.s.c.S.Request webapp=/solr path=/select params={q=yea&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,created,+body,+score&fq=created:[*+TO+NOW]&sort=reddit_score+asc&rows=5&wt=json} hits=8 status=0 QTime=13
-2024-04-10 16:26:28.337 INFO  (qtp711112124-36-localhost-75) [c: s: r: x:cz4034 t:localhost-75] o.a.s.c.S.Request webapp=/solr path=/select params={q=regression&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=5 status=0 QTime=35
-2024-04-10 16:28:41.647 INFO  (qtp711112124-39-localhost-76) [c: s: r: x:cz4034 t:localhost-76] o.a.s.c.S.Request webapp=/solr path=/select params={q=regres&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=0 status=0 QTime=12
-2024-04-10 16:28:42.181 INFO  (qtp711112124-31-localhost-77) [c: s: r: x:cz4034 t:localhost-77] o.a.s.c.S.Request webapp=/solr path=/select params={q=regress&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=0 status=0 QTime=11
-2024-04-10 16:28:44.248 INFO  (qtp711112124-39-localhost-78) [c: s: r: x:cz4034 t:localhost-78] o.a.s.c.S.Request webapp=/solr path=/select params={q=regress&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=0 status=0 QTime=8
-2024-04-10 16:28:57.316 INFO  (qtp711112124-31-localhost-79) [c: s: r: x:cz4034 t:localhost-79] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=9
-2024-04-10 16:33:00.808 INFO  (qtp711112124-32-localhost-80) [c: s: r: x:cz4034 t:localhost-80] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=9
-2024-04-10 16:34:38.149 INFO  (qtp711112124-33-localhost-81) [c: s: r: x:cz4034 t:localhost-81] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=8
-2024-04-10 16:35:41.164 INFO  (qtp711112124-36-localhost-82) [c: s: r: x:cz4034 t:localhost-82] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=11
-2024-04-10 16:38:39.641 INFO  (qtp711112124-34-localhost-83) [c: s: r: x:cz4034 t:localhost-83] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=9
-2024-04-10 16:39:54.301 INFO  (qtp711112124-38-localhost-84) [c: s: r: x:cz4034 t:localhost-84] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=6
-2024-04-10 16:41:18.117 INFO  (qtp711112124-34-localhost-85) [c: s: r: x:cz4034 t:localhost-85] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=10
-2024-04-10 16:46:44.938 INFO  (qtp711112124-34-localhost-86) [c: s: r: x:cz4034 t:localhost-86] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=9
-2024-04-10 16:46:54.602 INFO  (qtp711112124-37-localhost-87) [c: s: r: x:cz4034 t:localhost-87] o.a.s.c.S.Request webapp=/solr path=/select params={q=&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=0 status=0 QTime=8
-2024-04-10 16:46:59.691 INFO  (qtp711112124-40-localhost-88) [c: s: r: x:cz4034 t:localhost-88] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=4
-2024-04-10 16:47:34.966 ERROR (qtp711112124-37-localhost-89) [c: s: r: x:cz4034 t:localhost-89] o.a.s.h.RequestHandlerBase Client exception => org.apache.solr.common.SolrException: Invalid Date in Date Math String:'2022/10/02T00:00:00Z'
-	at org.apache.solr.util.DateMathParser.parseMath(DateMathParser.java:240)
-org.apache.solr.common.SolrException: Invalid Date in Date Math String:'2022/10/02T00:00:00Z'
-	at org.apache.solr.util.DateMathParser.parseMath(DateMathParser.java:240) ~[?:?]
-	at org.apache.solr.util.DateMathParser.parseMath(DateMathParser.java:211) ~[?:?]
-	at org.apache.solr.schema.DatePointField.getPointRangeQuery(DatePointField.java:127) ~[?:?]
-	at org.apache.solr.schema.PointField.getSpecializedRangeQuery(PointField.java:182) ~[?:?]
-	at org.apache.solr.schema.FieldType.getRangeQuery(FieldType.java:925) ~[?:?]
-	at org.apache.solr.parser.SolrQueryParserBase.getRangeQueryImpl(SolrQueryParserBase.java:1258) ~[?:?]
-	at org.apache.solr.parser.SolrQueryParserBase.getRangeQuery(SolrQueryParserBase.java:1245) ~[?:?]
-	at org.apache.solr.parser.QueryParser.Term(QueryParser.java:548) ~[?:?]
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:293) ~[?:?]
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:173) ~[?:?]
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:143) ~[?:?]
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:276) ~[?:?]
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:51) ~[?:?]
-	at org.apache.solr.search.QParser.getQuery(QParser.java:188) ~[?:?]
-	at org.apache.solr.search.QueryUtils.parseFilterQueries(QueryUtils.java:246) ~[?:?]
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:209) ~[?:?]
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:431) ~[?:?]
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
-	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
-	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
-	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
-Caused by: java.time.format.DateTimeParseException: Text '2022/10/02T00:00:00Z' could not be parsed at index 4
-	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2108) ~[?:?]
-	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:2010) ~[?:?]
-	at org.apache.solr.util.DateMathParser.parseNoMath(DateMathParser.java:269) ~[?:?]
-	at org.apache.solr.util.DateMathParser.parseMath(DateMathParser.java:238) ~[?:?]
-	... 67 more
-2024-04-10 16:47:34.967 INFO  (qtp711112124-37-localhost-89) [c: s: r: x:cz4034 t:localhost-89] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[2022/10/02T00:00:00Z+TO+2024/04/11T23:59:59Z]&rows=5&wt=json} status=400 QTime=32
-2024-04-10 16:48:12.040 INFO  (qtp711112124-40-localhost-90) [c: s: r: x:cz4034 t:localhost-90] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[2022-10-02T00:00:00Z+TO+2024-04-11T23:59:59Z]&rows=5&wt=json} hits=168 status=0 QTime=56
-2024-04-10 16:48:25.462 INFO  (qtp711112124-37-localhost-91) [c: s: r: x:cz4034 t:localhost-91] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=5&wt=json} hits=229 status=0 QTime=7
-2024-04-10 16:48:51.113 INFO  (qtp711112124-40-localhost-92) [c: s: r: x:cz4034 t:localhost-92] o.a.s.c.S.Request webapp=/solr path=/select params={q=recession&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[2024-04-10T00:00:00Z+TO+2024-04-11T23:59:59Z]&rows=5&wt=json} hits=0 status=0 QTime=23
+	at java.base/java.lang.Thread.run(Thread.java:829) [?:?]
+2024-04-11 17:46:00.634 INFO  (qtp1648582256-19-localhost-26) [c: s: r: x:cz4034 t:localhost-26] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} hits=10205 status=0 QTime=3
+2024-04-11 17:46:00.634 INFO  (qtp1648582256-19-localhost-26) [c: s: r: x:cz4034 t:localhost-26] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={} status=0 QTime=3
+2024-04-11 17:46:02.193 INFO  (qtp1648582256-25-localhost-27) [c: s: r: x:cz4034 t:localhost-27] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={}{add=[1azytar (1796061329649303552), 1azyssf (1796061329657692160), 1azxsze (1796061329657692161), 1azx26v (1796061329658740736), 1azvuxx (1796061329658740737), 1azva4x (1796061329659789312), 1azv8xe (1796061329659789313), 1azv3no (1796061329659789314), 1azun3q (1796061329659789315), 1azu5hw (1796061329660837888), ... (10205 adds)]} 0 1420
+2024-04-11 17:46:02.636 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-04-11 17:46:02.636 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: default
+2024-04-11 17:46:02.730 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.h.c.SpellCheckComponent Building spell index for spell checker: wordbreak
+2024-04-11 17:46:02.733 INFO  (searcherExecutor-13-thread-1-processing-cz4034 localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2024-04-11 17:46:02.741 INFO  (qtp1648582256-19-localhost-28) [c: s: r: x:cz4034 t:localhost-28] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={commit=true}{commit=, commit=} 0 543
+2024-04-11 17:46:08.817 INFO  (qtp1648582256-25-localhost-29) [c: s: r: x:cz4034 t:localhost-29] o.a.s.c.S.Request webapp=/solr path=/select params={q=google&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=10000&wt=json} hits=248 status=0 QTime=9
+2024-04-11 17:47:17.286 INFO  (qtp1648582256-16-localhost-31) [c: s: r: x: t:localhost-31] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712857637237} status=0 QTime=1
+2024-04-11 17:47:17.297 INFO  (qtp1648582256-24-localhost-32) [c: s: r: x: t:localhost-32] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712857637237} status=0 QTime=10
+2024-04-11 17:47:19.340 INFO  (qtp1648582256-24-localhost-33) [c: s: r: x: t:localhost-33] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712857637237} status=0 QTime=0
+2024-04-11 17:47:19.343 INFO  (qtp1648582256-53-localhost-34) [c: s: r: x: t:localhost-34] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712857637237} status=0 QTime=2
+2024-04-11 17:47:19.343 INFO  (qtp1648582256-16-localhost-35) [c: s: r: x:cz4034 t:localhost-35] o.a.s.c.S.Request webapp=/solr path=/admin/ping params={action=status&wt=json&_=1712857637237&ts=1712857637237} status=503 QTime=1
+2024-04-11 17:47:19.344 INFO  (qtp1648582256-25-localhost-36) [c: s: r: x:cz4034 t:localhost-36] o.a.s.c.S.Request webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json&_=1712857639336} status=0 QTime=1
+2024-04-11 17:47:19.348 INFO  (qtp1648582256-48-localhost-37) [c: s: r: x:cz4034 t:localhost-37] o.a.s.c.S.Request webapp=/solr path=/admin/system params={wt=json&_=1712857639336} status=0 QTime=3
+2024-04-11 17:47:19.348 INFO  (qtp1648582256-19-localhost-38) [c: s: r: x:cz4034 t:localhost-38] o.a.s.c.S.Request webapp=/solr path=/replication params={wt=json&command=details&_=1712857639336} status=0 QTime=3
+2024-04-11 17:47:22.001 INFO  (qtp1648582256-48-localhost-39) [c: s: r: x: t:localhost-39] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712857637237} status=0 QTime=0
+2024-04-11 17:47:22.005 INFO  (qtp1648582256-54-localhost-41) [c: s: r: x: t:localhost-41] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712857637237} status=0 QTime=4
+2024-04-11 17:47:22.011 INFO  (qtp1648582256-18-localhost-40) [c: s: r: x:cz4034 t:localhost-40] o.a.s.c.S.Request webapp=/solr path=/config/params params={wt=json&_=1712857641959} status=0 QTime=10
+2024-04-11 17:47:26.155 INFO  (qtp1648582256-19-localhost-44) [c: s: r: x:cz4034 t:localhost-44] o.a.s.c.S.Request webapp=/solr path=/config/params params={wt=json&_=1712857641959} status=0 QTime=0
+2024-04-11 17:47:26.155 INFO  (qtp1648582256-48-localhost-42) [c: s: r: x: t:localhost-42] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1712857637237} status=0 QTime=0
+2024-04-11 17:47:26.157 INFO  (qtp1648582256-16-localhost-43) [c: s: r: x:cz4034 t:localhost-43] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&indent=true&q.op=OR&useParams=&_=1712857641959} hits=10205 status=0 QTime=2
+2024-04-11 17:47:26.167 INFO  (qtp1648582256-25-localhost-45) [c: s: r: x: t:localhost-45] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1712857637237} status=0 QTime=11
+2024-04-11 17:48:22.233 INFO  (qtp1648582256-25-localhost-46) [c: s: r: x:cz4034 t:localhost-46] o.a.s.c.S.Request webapp=/solr path=/select params={q=google+fall&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=10000&wt=json} hits=541 status=0 QTime=30
+2024-04-11 17:48:48.860 INFO  (qtp1648582256-19-localhost-47) [c: s: r: x:cz4034 t:localhost-47] o.a.s.c.S.Request webapp=/solr path=/select params={q=microsoft+vs+google&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=10000&wt=json} hits=686 status=0 QTime=10
+2024-04-11 17:48:53.241 INFO  (qtp1648582256-25-localhost-48) [c: s: r: x:cz4034 t:localhost-48] o.a.s.c.S.Request webapp=/solr path=/select params={q=microsoft+vs+google&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=10000&wt=json} hits=686 status=0 QTime=9
+2024-04-11 17:51:34.345 INFO  (qtp1648582256-18-localhost-49) [c: s: r: x:cz4034 t:localhost-49] o.a.s.c.S.Request webapp=/solr path=/select params={q=tesla+elon+musk+bad&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=10000&wt=json} hits=575 status=0 QTime=18
+2024-04-11 17:52:05.784 INFO  (qtp1648582256-55-localhost-50) [c: s: r: x:cz4034 t:localhost-50] o.a.s.c.S.Request webapp=/solr path=/select params={q=stanford&df=spellcheck&defType=dismax&bf=counter^2&fl=id,+title,+subreddit,+created+,+body,+score&fq=created:[*+TO+NOW]&rows=10000&wt=json} hits=1 status=0 QTime=44

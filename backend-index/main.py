@@ -41,12 +41,10 @@ solr.ping() # optional
  
 # ...or all documents. 
 #solr.delete(q='*:*') 
-df = pd.read_csv('../data/original_data.csv') # change the path to the data file
+df = pd.read_csv('../data/final_data.csv') # change the path to the data file
 
 # Remove the unnamed index column
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-df = df.rename(columns={'score': 'reddit_score'}) # do not perform this if the input data is "../data/original_dataTest.csv"
-df['counter'] = 0 # do not perform this if the input data is "../data/original_dataTest.csv"
 
 def addFileIntoCore(): 
     print("Preparing data for upload...\n")
@@ -290,15 +288,15 @@ def combinedQuery(query, start="", end="", sort_type=""):
 
     queryParams = {
             'rows' : 10000,
-            'fl': 'id, title, subreddit, created , body, score , reddit_score',
+            'fl': 'id, title, subreddit, created , body, score , reddit_score, predicted_sentiment',
             'df': 'spellcheck',
             'defType': 'dismax', # use dismax query parser
             'bf': 'counter^2'# boost the counter field to make the upvoted posts appear first
     }
 
     # handle sentiment processing
-    # if (sort_type["sentiment"]!=""):
-    #     queryParams['fq'] = 'subreddit:' + sort_type["sentiment"]
+    if (sort_type["sentiment"]!=""):
+        queryParams['fq'] = 'predicted_sentiment:' + sort_type["sentiment"].lower()
 
     # handle date ordering
     if (start == ""):
@@ -314,9 +312,6 @@ def combinedQuery(query, start="", end="", sort_type=""):
         queryParams['fq'] += ' AND created:[' + start + ' TO ' + end + ']'
     else:
         queryParams['fq'] = 'created:[' + start + ' TO ' + end + ']'
-        
-
-    print("obtained the fq, doinign sort now")
 
     # handle sorting
     sort = ""

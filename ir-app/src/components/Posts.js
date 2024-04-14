@@ -37,6 +37,7 @@ const Posts = ({ documents , handleVote}) => {
   }
 
   const getSentimentPill = (sentiment) => {
+    console.log(sentiment)
     let variant = 'success';
     if (sentiment === 'negative') {
       variant = 'danger';
@@ -58,7 +59,7 @@ const Posts = ({ documents , handleVote}) => {
                 {getSubRedditPill("r/" + document.subreddit)}
               </div>
               <div>
-                {/* {getSentimentPill(document.sentiment)} */}
+                {getSentimentPill(document.predicted_sentiment[0])}
               </div>
             </Card.Header>
             <Card.Body>

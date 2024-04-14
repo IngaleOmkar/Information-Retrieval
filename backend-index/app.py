@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-df = pd.read_csv('../data/updated_data.csv') # change the path to the data file
+df = pd.read_csv('../data/final_data.csv') # change the path to the data file
 
 # Remove the unnamed index column
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]

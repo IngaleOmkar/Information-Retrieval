@@ -300,9 +300,9 @@ export default function HomePage() {
                       <DropdownButton id="Sentiment" variant="outline-dark" menuVariant="light" title={sentimentFilter}>
                         <Dropdown.Item onClick={() => { setSentimentFilter("Sentiment"); setSentiment("") }}>Sentiment</Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item onClick={() => { setSentimentFilter("Positive"); setSentiment('Positive') }}>Positive</Dropdown.Item>
-                        <Dropdown.Item onClick={() => { setSentimentFilter("Negative"); setSentiment('Negative') }}>Negative</Dropdown.Item>
-                        <Dropdown.Item onClick={() => { setSentimentFilter("Neutral"); setSentiment('Neutral') }}>Neutral</Dropdown.Item>
+                        <Dropdown.Item onClick={() => { setSentimentFilter("Positive"); setSentiment('positive') }}>Positive</Dropdown.Item>
+                        <Dropdown.Item onClick={() => { setSentimentFilter("Negative"); setSentiment('negative') }}>Negative</Dropdown.Item>
+                        <Dropdown.Item onClick={() => { setSentimentFilter("Neutral"); setSentiment('neutral') }}>Neutral</Dropdown.Item>
                       </DropdownButton>
                     </div>
                     <div className="col-auto">
