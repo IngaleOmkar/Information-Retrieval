@@ -24,7 +24,7 @@ addFileIntoCore()
 
 @atexit.register
 def save():
-    df.to_csv('../data/updated_data.csv') #change name later
+    df.to_csv('../data/final_data.csv') #change name later
 
 @app.route('/get_query', methods=['POST'])
 def get_query():
