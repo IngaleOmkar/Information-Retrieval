@@ -33,7 +33,7 @@ export default function HomePage() {
   const [scoreFilter, setScoreFilter] = React.useState('Relevancy');
   // Submit filter options
   const [time, setTime] = React.useState("");
-  const [sentiment, setSentiment] = React.useState("Sentiment");
+  const [sentiment, setSentiment] = React.useState("");
   const [score, setScore] = React.useState("");
   const [documents, setDocuments] = useState([]); //holds result of reddit posts
   const [startDate, setStartDate] = useState(null);
@@ -248,17 +248,35 @@ export default function HomePage() {
             <div className="col-auto sticky-top" style={{ marginLeft: '10px', marginTop: '50px', maxWidth: '25%', zIndex: '0' }}>
               <h3>Distribution of Sentiments in Search Results</h3>
               {wordCloud && <PieChart
-                data={[
-                  // match color to sentiment
-                  { title: 'One', value: 1, color: '#66bb6a' },
-                  { title: 'Two', value: 1, color: '#f44336' },
-                  { title: 'Three', value: 1, color: '#ffb74d' },
-                ]} label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+                // data={[
+                //   // match color to sentiment
+                //   { title: 'One', value: 1, color: '#66bb6a' },
+                //   { title: 'Two', value: 1, color: '#f44336' },
+                //   { title: 'Three', value: 1, color: '#ffb74d' },
+                // ]} label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+                data={
+                  documents.reduce((acc, curr) => {
+                    if (curr.predicted_sentiment[0] === 'positive') {
+                      acc[0].value += 1;
+                    } else if (curr.predicted_sentiment[0] === 'negative') {
+                      acc[1].value += 1;
+                    } else {
+                      acc[2].value += 1;
+                    }
+                    return acc;
+                  }, [
+                    { title: 'Positive', value: 0, color: '#66bb6a' },
+                    { title: 'Negative', value: 0, color: '#f44336' },
+                    { title: 'Neutral', value: 0, color: '#ffb74d' },
+                  ])
+                }
+                label={({ dataEntry }) => `${dataEntry.title}: ${Math.round((dataEntry.value / documents.length) * 100)} %`}
                 labelStyle={{
-                  fontSize: '5px',
+                  fontSize: '3px',
                   fontFamily: 'sans-serif',
                   fill: 'black',
                 }}
+                
               />}
               {/* PLACEHOLDER FOR WORD CLOUD */}
               <div className="col-auto" style={{ marginTop: "30px" }}>
