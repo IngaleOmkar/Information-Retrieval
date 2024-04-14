@@ -3,6 +3,14 @@
 
 This is the code repository for the implementation of the Reddit Finance Search Engine created by Team 29 for the course assignment of CZ4034: Information Retrieval @ NTU. 
 
+Team Members:
+- [@IngaleOmkar](https://github.com/IngaleOmkar)
+- [@sumodum](https://github.com/sumodum)
+- [@sumyatttt](https://github.com/sumyatttt)
+- [@chengpingg](https://github.com/chengpingg)
+- [@neelkumar812](https://github.com/neelkumar812)
+- [@NZX23](https://github.com/NZX23)
+
 Table of Contents:
 - [Installation](installation)
 - [Setup](setup)
