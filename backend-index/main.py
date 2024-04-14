@@ -222,9 +222,11 @@ def generateWordCloudWithResults(results):
         if (format(result['body']) == "['NaN']"): 
             text += str(result['title']) + " "
         else: 
-            body = re.sub(r'\n+', ' ', str(result['body']))
+            body = re.sub(r'\n+', ' ', str(result['body'][0]))
+            body = str(result['body'][0]).strip().replace('\n', ' ').replace('\r', ' ').replace('\n\n', '').replace('\r\n', ' ').replace('\r\r', ' ').replace('\n\r', ' ').replace('*','').replace('/s','')
             text += str(result['title']) + " " + body + " "
         #print(text)
+
     stopwords = set(STOPWORDS)
     # generate the word cloud
     wordcloud = WordCloud(width = 800, height = 800, 

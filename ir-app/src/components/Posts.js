@@ -11,6 +11,7 @@ import { BiUpvote, BiDownvote } from "react-icons/bi";
 
 const Posts = ({ documents , handleVote}) => {
 
+
   const [sortOrder, setSortOrder] = useState('desc'); // Default to descending order
 
   // Function to toggle sort order
@@ -37,7 +38,6 @@ const Posts = ({ documents , handleVote}) => {
   }
 
   const getSentimentPill = (sentiment) => {
-    console.log(sentiment)
     let variant = 'success';
     if (sentiment === 'negative') {
       variant = 'danger';

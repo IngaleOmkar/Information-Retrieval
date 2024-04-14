@@ -118,9 +118,10 @@ export default function HomePage() {
         setTotalPages(Math.ceil(response.data.results.documents.length / postsPerPage));
         // set the documents for the current page
         // setDocumentsForCurrentPage(response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage));
-
-        setDocumentsForCurrentPage(()=>[...response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage)])
-
+        const documentsCopy = [...response.data.results.documents];
+        // setDocumentsForCurrentPage(()=>[...response.data.results.documents.slice((page - 1) * postsPerPage, page * postsPerPage)])
+        console.log(documentsCopy.slice((page - 1) * postsPerPage, page * postsPerPage))
+        setDocumentsForCurrentPage(()=> {return documentsCopy.slice((page - 1) * postsPerPage, page * postsPerPage)});
         setQueryTime(response.data.results.query_time);
       }
       else {
@@ -270,7 +271,8 @@ export default function HomePage() {
                     { title: 'Neutral', value: 0, color: '#ffb74d' },
                   ])
                 }
-                label={({ dataEntry }) => `${Math.round((dataEntry.value / documents.length) * 100)} %`}
+                label={({ dataEntry }) => dataEntry.value === 0 ? '' : `${Math.round(dataEntry.percentage)} %`}
+                labelPosition={70}
                 labelStyle={{
                   fontSize: '4px',
                   fontFamily: 'sans-serif',
