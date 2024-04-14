@@ -274,7 +274,7 @@ export default function HomePage() {
                   {
                     spellcheck !== "" && spellcheck !== "no spellcheck found" &&
                     <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
-                      <h5 style={{ paddingTop: 2 }}>Did you mean:</h5>
+                      <h5 style={{ paddingTop: '10px' }}>Did you mean:</h5>
                       <Button onClick={(event)=>{console.log("clicked") ; handleSpellcheck(event)}} style={{ color: 'blue', background: 'none', border: 'none', fontSize: 20 }}>
                         {spellcheck}
                       </Button>
