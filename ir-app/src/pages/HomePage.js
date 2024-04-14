@@ -270,9 +270,9 @@ export default function HomePage() {
                     { title: 'Neutral', value: 0, color: '#ffb74d' },
                   ])
                 }
-                label={({ dataEntry }) => `${dataEntry.title}: ${Math.round((dataEntry.value / documents.length) * 100)} %`}
+                label={({ dataEntry }) => `${Math.round((dataEntry.value / documents.length) * 100)} %`}
                 labelStyle={{
-                  fontSize: '3px',
+                  fontSize: '4px',
                   fontFamily: 'sans-serif',
                   fill: 'black',
                 }}
